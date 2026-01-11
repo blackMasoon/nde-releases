@@ -73,10 +73,9 @@ jobs:
           # Find MD files and convert. Exit on error.
           find books -name "*.md" | while read file; do
             echo "Converting $file..."
-            outfile="${file%.md}.pdf"
             
-            # Using --no-sandbox args structure
-            npx md-to-pdf "$file" --dest "$outfile" --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}' --css "$CSS" || exit 1
+            # Bez --dest (domyślnie zapisuje obok pliku .md)
+            npx md-to-pdf "$file" --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}' --css "$CSS" || exit 1
           done
 
       - name: Commit PDFs
