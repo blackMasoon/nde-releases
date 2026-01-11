@@ -15,22 +15,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - name: Install Puppeteer Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
 
       - name: Install Tools
         run: npm install -g md-to-pdf
 
       - name: Generate PDFs
         run: |
-          # Typography Setup
           CSS="@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap'); body { font-family: 'Crimson Text', serif; font-size: 14px; line-height: 1.6; } h1, h2, h3 { font-family: 'Cinzel', serif; color: #1c1917; } blockquote { border-left: 4px solid #b91c1c; padding-left: 1em; color: #57534e; } .page-break { page-break-after: always; }"
           
+          # Find MD files and convert. Exit on error.
           find books -name "*.md" | while read file; do
             echo "Converting $file..."
             outfile="${file%.md}.pdf"
-            npx md-to-pdf "$file" --dest "$outfile" --launch-options '{"args": ["--no-sandbox"]}' --css "$CSS"
+            npx md-to-pdf "$file" --dest "$outfile" --launch-options '{"args": ["--no-sandbox"]}' --css "$CSS" || exit 1
           done
 
       - name: Commit PDFs
