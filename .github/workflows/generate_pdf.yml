@@ -1,0 +1,41 @@
+name: Generate PDFs
+on:
+  push:
+    paths:
+      - 'books/**/*.md'
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Tools
+        run: npm install -g md-to-pdf
+
+      - name: Generate PDFs
+        run: |
+          # Typography Setup
+          CSS="@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap'); body { font-family: 'Crimson Text', serif; font-size: 14px; line-height: 1.6; } h1, h2, h3 { font-family: 'Cinzel', serif; color: #1c1917; } blockquote { border-left: 4px solid #b91c1c; padding-left: 1em; color: #57534e; } .page-break { page-break-after: always; }"
+          
+          find books -name "*.md" | while read file; do
+            echo "Converting $file..."
+            outfile="${file%.md}.pdf"
+            npx md-to-pdf "$file" --dest "$outfile" --launch-options '{"args": ["--no-sandbox"]}' --css "$CSS"
+          done
+
+      - name: Commit PDFs
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add books/**/*.pdf
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-generate PDFs [skip ci]" && git push)
