@@ -73,9 +73,10 @@ jobs:
           # Find MD files and convert. Exit on error.
           find books -name "*.md" | while read file; do
             echo "Converting $file..."
+            outfile="${file%.md}.pdf"
             
-            # Bez --dest (domyślnie zapisuje obok pliku .md)
-            npx md-to-pdf "$file" --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}' --css "$CSS" || exit 1
+            # ZMIANA: Dodano > "$outfile" aby zapisać wynik do pliku
+            npx md-to-pdf "$file" --launch-options '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}' --css "$CSS" > "$outfile" || exit 1
           done
 
       - name: Commit PDFs
