@@ -29,21 +29,21 @@ jobs:
           sudo apt-get install -y fonts-liberation libasound2t64 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc-s1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
           npm install md-to-pdf
 
-      - name: Generate PDFs
+           - name: Generate PDFs
         run: |
-          # Tworzymy skrypt konwertujący w Node.js (omija problemy CLI)
+          # WERSJA POPRAWIONA (bez zbędnych backslashy)
           cat << 'EOF' > convert.js
           const fs = require('fs');
           const { mdToPdf } = require('md-to-pdf');
 
-          // Styles are injected into files, fallbacks here
           const CSS = "body { font-family: serif; }"; 
 
           function getFiles(dir, files = []) {
              if (!fs.existsSync(dir)) return files;
              const fileList = fs.readdirSync(dir);
              for (const file of fileList) {
-               const name = \`\${dir}/\${file}\`;
+               // POPRAWKA: Czysty JavaScript
+               const name = `${dir}/${file}`;
                if (fs.statSync(name).isDirectory()) {
                  getFiles(name, files);
                } else if (name.endsWith('.md')) {
@@ -56,13 +56,13 @@ jobs:
           (async () => {
             try {
               const files = getFiles('books');
-              console.log(\`Found \${files.length} markdown files.\`);
+              // POPRAWKA: Czysty JavaScript
+              console.log(`Found ${files.length} markdown files.`);
 
               for (const file of files) {
-                console.log(\`Converting \${file}...\`);
+                console.log(`Converting ${file}...`);
                 const pdfPath = file.replace('.md', '.pdf');
                 
-                // Używamy API, które poprawnie obsługuje parametr dest!
                 await mdToPdf(
                   { path: file },
                   {
@@ -80,7 +80,6 @@ jobs:
           })();
           EOF
           
-          # Odpalamy konwersję
           node convert.js
 
       - name: Commit PDFs
