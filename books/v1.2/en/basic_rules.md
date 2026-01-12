@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T10:14:35.569Z"
+generated_at: "2026-01-12T20:13:56.047Z"
 ---
 
 
@@ -186,13 +186,12 @@ Roll only when both are true:
 If a task is trivial and pressure‑free, the GM can just say “it works”.
 
 
-### 3.2 How to roll (steps)
-1) Player states what they do and the intended effect.
-2) GM picks the attribute: S or D or M.
-3) GM sets the <span class="rpg-token token-tn">TN</span> and any situational adjustments.
-4) Player rolls a single attribute die.
-5) Compare to <span class="rpg-token token-tn">TN</span> and apply results.
-
+### 3.2 How to perform a test (step by step)
+1) The player states **what they are doing** and **what effect they want**.
+2) The GM chooses a characteristic: S, Z, or M.
+3) The GM sets the **<span class="rpg-token token-tn">TN</span>** (Difficulty) and any situational modifiers.
+4) The player rolls **one characteristic die**.
+5) Compare the result to the <span class="rpg-token token-tn">TN</span> and determine the outcomes.
 
 ### 3.3 Difficulty scale (<span class="rpg-token token-tn">TN</span>)
 Use four bands:
@@ -309,11 +308,16 @@ This keeps pace fast. For more tactical play, add initiative (see GM book).
 
 
 ### 5.3 What you can do on your turn
-- Move up to 5 squares,
-- take 1 Action.
+On your turn, you have:
+- **Movement** (up to 5 squares),
+- **1 Action**.
 
-An Action can be: attack, attribute test (dash through danger, pull lever), use gear, help an ally, use Magic.
-
+An action can be:
+- an attack,
+- a skill check (e.g., pulling a lever, running through a hazard),
+- using equipment,
+- assisting an ally,
+- using Magic.
 
 ### Atak
 
@@ -441,6 +445,28 @@ Example B — failure and fallout:
 
 ---
 
+### 7.1 Hearts (life)
+- By default, you have **5 Hearts**.
+- Losing a Heart means real damage or exhaustion — depending on the world.
+
+### 0 Serc
+
+> Translation pending...
+
+---
+
+### 7.2 0 Hearts
+If you fall to 0 Hearts:
+- you are **down** and cannot take actions,
+- an ally can spend an Action to get you back on your feet with **1 Heart**.
+
+### 7.3 Rest
+After a scene of combat/conflict, if you have a moment of safe rest (and basic conditions), you return to full:
+- Hearts,
+- Mana.
+
+This keeps the system fast and does not require lengthy healing.
+
 
 
 ---
@@ -502,6 +528,10 @@ Raise one attribute’s level (e.g., Novice→Trained) or +1 Heart/Mana.
 
 
 ---
+
+### 1. Introduction
+
+7.2 Additional tools are not required, but they can sometimes facilitate management.
 
 ### 11.1 Protection (armor) as a simple resource
 - A character with protection has 1 Armor token per scene.
