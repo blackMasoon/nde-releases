@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T10:14:57.848Z"
+generated_at: "2026-01-12T20:14:32.152Z"
 ---
 
 
@@ -80,14 +80,13 @@ generated_at: "2026-01-12T10:14:57.848Z"
 
 ---
 
-- The GM describes the situation and options.
-- You say what you do and what result you want.
-- If the outcome is uncertain, the GM tells you:
-  1) which attribute you use (S/D/M),
-  2) the difficulty (<span class="rpg-token token-tn">TN</span>),
-  3) what happens on failure.
-- You roll a single attribute die and check if result ≥ <span class="rpg-token token-tn">TN</span>.
-
+- The GM describes the situation and states what is possible.
+- You say **what you do** and **what effect you want**.
+- If the outcome is uncertain, the GM states:
+  1) which attribute you are using (S/Z/M),
+  2) what the difficulty is (<span class="rpg-token token-tn">TN</span>),
+  3) what may happen in case of failure.
+- You roll **one die** of your attribute and check if the result ≥ <span class="rpg-token token-tn">TN</span>.
 
 ### The shortest rule
 Roll your attribute die. Result ≥ <span class="rpg-token token-tn">TN</span> = success.
@@ -370,12 +369,11 @@ The GM may raise/lower your threshold by one step for situation or help.
 
 ---
 
-- Always say what you do and why. Intent helps the GM pick clear stakes.
-- If <span class="rpg-token token-tn">TN</span> is high, don’t brute‑force the roll — change the situation (cover, tools, help, new route).
-- Coordinate: one helps, the other rolls.
-- In combat, cover and position often matter more than the roll.
+- Always say: **what you do** + **why**. "I want to pull the lever" is okay, but "I want to pull the lever to close the passage" is even better.
+- If the <span class="rpg-token token-tn">TN</span> is high: don't "strain the roll" — change the situation (cover, tools, assistance, another way).
+- Establish cooperation: one person helps, the other makes the roll.
+- In combat, respect cover and position — they are often more important than the roll itself.
 
 ---
-End of the Player’s Book.
-
+End of the player’s book.
 
