@@ -63,9 +63,9 @@ pdf_options:
     }
     .footer-logo { height: 16px; vertical-align: middle; opacity: 0.6; margin-left: 10px; }
 </style>
-# Regeln auf einen Blick
+# スタート (要約)
 
-Automatic translation placeholder for de
+
 
 ---
 
