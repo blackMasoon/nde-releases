@@ -25,13 +25,11 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update
-          # Instalacja bibliotek systemowych wymaganych przez Chrome/Puppeteer
           sudo apt-get install -y fonts-liberation libasound2t64 libatk-bridge2.0-0 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc-s1 libglib2.0-0 libgtk-3-0 libnspr4 libnss3 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 lsb-release wget xdg-utils
           npm install md-to-pdf
 
-           - name: Generate PDFs
+      - name: Generate PDFs
         run: |
-          # WERSJA POPRAWIONA (bez zbędnych backslashy)
           cat << 'EOF' > convert.js
           const fs = require('fs');
           const { mdToPdf } = require('md-to-pdf');
@@ -42,7 +40,6 @@ jobs:
              if (!fs.existsSync(dir)) return files;
              const fileList = fs.readdirSync(dir);
              for (const file of fileList) {
-               // POPRAWKA: Czysty JavaScript
                const name = `${dir}/${file}`;
                if (fs.statSync(name).isDirectory()) {
                  getFiles(name, files);
@@ -54,29 +51,28 @@ jobs:
           }
 
           (async () => {
-            try {
-              const files = getFiles('books');
-              // POPRAWKA: Czysty JavaScript
-              console.log(`Found ${files.length} markdown files.`);
+             try {
+               const files = getFiles('books');
+               console.log(`Found ${files.length} markdown files.`);
 
-              for (const file of files) {
-                console.log(`Converting ${file}...`);
-                const pdfPath = file.replace('.md', '.pdf');
-                
-                await mdToPdf(
-                  { path: file },
-                  {
-                    dest: pdfPath,
-                    css: CSS, 
-                    launch_options: { args: ['--no-sandbox', '--disable-setuid-sandbox'] } 
-                  }
-                );
-              }
-              console.log('Conversion complete!');
-            } catch (err) {
-              console.error('Fatal Error:', err);
-              process.exit(1);
-            }
+               for (const file of files) {
+                 console.log(`Converting ${file}...`);
+                 const pdfPath = file.replace('.md', '.pdf');
+                 
+                 await mdToPdf(
+                   { path: file },
+                   {
+                     dest: pdfPath,
+                     css: CSS, 
+                     launch_options: { args: ['--no-sandbox', '--disable-setuid-sandbox'] } 
+                   }
+                 );
+               }
+               console.log('Conversion complete!');
+             } catch (err) {
+               console.error('Fatal Error:', err);
+               process.exit(1);
+             }
           })();
           EOF
           
