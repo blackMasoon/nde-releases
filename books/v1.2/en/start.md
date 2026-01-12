@@ -1,20 +1,21 @@
 ---
 pdf_options:
   displayHeaderFooter: true
+  headerTemplate: |-
+    <div style="font-size: 7px; width: 100%; text-align: center; color: #a8a29e; font-family: 'Crimson Text', serif; letter-spacing: 1px; padding-bottom: 5px;">
+      NANO DUNGEON ENGINE v1.2
+    </div>
   footerTemplate: |-
     <div class="pdf-footer">
-      <div style="display:flex; align-items:center;">
-        <span>Nano Dungeon Engine</span>
-        <img src="https://nano-dungeon-engine.fly.dev/nde_logo.png" class="footer-logo" />
-      </div>
-      <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
+      <span style="font-family: 'Cinzel', serif; font-size: 8px; color: #78716c;">Nano Dungeon Engine</span>
+      <span style="transform: scale(0.8);">Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
     </div>
   margin:
     top: "20mm"
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T09:11:03.621Z"
+generated_at: "2026-01-12T09:19:50.290Z"
 ---
 
 
