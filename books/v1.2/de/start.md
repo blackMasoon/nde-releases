@@ -14,6 +14,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
+generated_at: "2026-01-12T09:11:03.662Z"
 ---
 
 
@@ -62,6 +63,11 @@ pdf_options:
         padding-top: 8px;
     }
     .footer-logo { height: 16px; vertical-align: middle; opacity: 0.6; margin-left: 10px; }
+    
+    /* Density Adjustments */
+    h1, h2, h3, h4 { margin-top: 1em; margin-bottom: 0.5em; }
+    p, ul, ol, blockquote { margin-bottom: 0.6em; }
+    hr { margin: 1.5em 0; border: 0; border-top: 1px solid #e7e5e4; }
 </style>
 # Regeln auf einen Blick
 
