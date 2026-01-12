@@ -1,3 +1,75 @@
+---
+pdf_options:
+  displayHeaderFooter: true
+  headerTemplate: |-
+    <div style="font-size: 8px; width: 100%; text-align: center; color: #b91c1c; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1px; padding-bottom: 5px;">
+      NANO DUNGEON ENGINE v1.2
+    </div>
+  footerTemplate: |-
+    <div style="font-size: 8px; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; color: #78716c; font-family: 'Cinzel', serif;">
+      <span>Nano Dungeon Engine</span>
+      <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
+    </div>
+  margin:
+    top: "20mm"
+    bottom: "20mm"
+    left: "20mm"
+    right: "20mm"
+generated_at: "2026-01-12T10:14:57.848Z"
+---
+
+
+<style>
+    body > h1:first-of-type, .markdown-body > h1:first-of-type { 
+        text-align: center; 
+        font-size: 2.5em; 
+        border-bottom: 2px solid #b91c1c; 
+        padding-bottom: 0.5em;
+        margin-bottom: 2em;
+    }
+</style>
+
+<style>
+    h1 { color: #1c1917; }
+    
+    /* Dice & Tokens */
+    .rpg-token {
+        display: inline-block;
+        padding: 0 0.3em;
+        border-radius: 0.25em;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+        white-space: nowrap;
+        font-size: 0.9em;
+    }
+    .token-d4 { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-d6 { background-color: #e2e8f0; color: #1e293b; border: 1px solid #94a3b8; }
+    .token-d8 { background-color: #bfdbfe; color: #1e40af; border: 1px solid #60a5fa; }
+    .token-d10 { background-color: #d8b4fe; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
+    .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
+    .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    
+    /* Footer Styling */
+    .pdf-footer {
+        font-family: 'System-ui', sans-serif;
+        font-size: 9px;
+        color: #78716c;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        border-top: 1px solid #e7e5e4;
+        padding-top: 8px;
+    }
+    .footer-logo { height: 16px; vertical-align: middle; opacity: 0.6; margin-left: 10px; }
+    
+    /* Density Adjustments */
+    h1, h2, h3, h4 { margin-top: 1em; margin-bottom: 0.5em; }
+    p, ul, ol, blockquote { margin-bottom: 0.6em; }
+    hr { margin: 1.5em 0; border: 0; border-top: 1px solid #e7e5e4; }
+</style>
 # Player Book
 
 
@@ -5,23 +77,25 @@
 ---
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 - The GM describes the situation and options.
 - You say what you do and what result you want.
 - If the outcome is uncertain, the GM tells you:
   1) which attribute you use (S/D/M),
-  2) the difficulty (TN),
+  2) the difficulty (<span class="rpg-token token-tn">TN</span>),
   3) what happens on failure.
-- You roll a single attribute die and check if result ≥ TN.
+- You roll a single attribute die and check if result ≥ <span class="rpg-token token-tn">TN</span>.
 
 
 ### The shortest rule
-Roll your attribute die. Result ≥ TN = success.
+Roll your attribute die. Result ≥ <span class="rpg-token token-tn">TN</span> = success.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 You have:
 - a Role (Warrior / Rogue / Mage),
@@ -38,7 +112,7 @@ You have:
 
 
 ### 2.2 Attribute dice
-Each attribute has a die (d6, d8, d10, d12, d20). You always roll one die.
+Each attribute has a die (<span class="rpg-token token-d6">d6</span>, <span class="rpg-token token-d8">d8</span>, <span class="rpg-token token-d10">d10</span>, <span class="rpg-token token-d12">d12</span>, <span class="rpg-token token-d20">d20</span>). You always roll one die.
 - Bigger die = better odds of high results.
 
 
@@ -48,13 +122,14 @@ Each attribute has a die (d6, d8, d10, d12, d20). You always roll one die.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### Step 1: Pick a role
 This sets your starting dice:
-- Warrior: S d10, D d6, M d6
-- Rogue:   S d6,  D d10, M d6
-- Mage:    S d6,  D d6,  M d10
+- Warrior: S <span class="rpg-token token-d10">d10</span>, D <span class="rpg-token token-d6">d6</span>, M <span class="rpg-token token-d6">d6</span>
+- Rogue:   S <span class="rpg-token token-d6">d6</span>,  D <span class="rpg-token token-d10">d10</span>, M <span class="rpg-token token-d6">d6</span>
+- Mage:    S <span class="rpg-token token-d6">d6</span>,  D <span class="rpg-token token-d6">d6</span>,  M <span class="rpg-token token-d10">d10</span>
 
 
 ### Step 2: Note resources
@@ -66,7 +141,7 @@ This sets your starting dice:
 Short keywords that describe strengths.
 - Neutral examples: Negotiator, Scout, Mechanic, Medic, Athlete, Analyst, Hacker.
 
-How Talents work: if a Talent truly helps, the GM may lower TN by one step.
+How Talents work: if a Talent truly helps, the GM may lower <span class="rpg-token token-tn">TN</span> by one step.
 - Usually 1 Talent per test.
 - Talent doesn’t replace description — it helps when it actually applies.
 
@@ -82,14 +157,15 @@ Gear mostly acts as permission: you have it, so you can try certain things.
 
 ### Example character
 - Role: Rogue
-- S d6, D d10, M d6
+- S <span class="rpg-token token-d6">d6</span>, D <span class="rpg-token token-d10">d10</span>, M <span class="rpg-token token-d6">d6</span>
 - Hearts 5, Mana 3
 - Talents: Scout, Negotiator
 - Gear: ranged tool, lockpicks, rope, light source
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### 4.1 When you roll
 You roll when it’s risky/uncertain and failure matters.
@@ -97,60 +173,61 @@ You roll when it’s risky/uncertain and failure matters.
 If it’s obvious and pressure‑free, GM can say “it works”.
 
 
-### 4.2 Difficulty (TN)
+### 4.2 Difficulty (<span class="rpg-token token-tn">TN</span>)
 Four bands:
-- TN 4 — Easy
-- TN 6 — Standard
-- TN 8 — Hard
-- TN 12 — Heroic
+- <span class="rpg-token token-tn">TN</span> 4 — Easy
+- <span class="rpg-token token-tn">TN</span> 6 — Standard
+- <span class="rpg-token token-tn">TN</span> 8 — Hard
+- <span class="rpg-token token-tn">TN</span> 12 — Heroic
 
-The GM sets TN. No need to guess — the GM tells you.
+The GM sets <span class="rpg-token token-tn">TN</span>. No need to guess — the GM tells you.
 
 
 ### Wyniki Testu
 
-> **Target Number (TN)**: 4 (Easy), 6 (Normal), 8 (Hard).
+> **Target Number (<span class="rpg-token token-tn">TN</span>)**: 4 (Easy), 6 (Normal), 8 (Hard).
 > 
 > **Roll Result:**
 > - **1**: Failure + Complication.
-> - **< TN**: Failure.
-> - **≥ TN**: Success.
+> - **< <span class="rpg-token token-tn">TN</span>**: Failure.
+> - **≥ <span class="rpg-token token-tn">TN</span>**: Success.
 > - **Max (10/20)**: Success + Benefit.
 
 ---
 
 ### 4.3 Outcomes
-- Result ≥ TN: success.
-- Result < TN: failure.
+- Result ≥ <span class="rpg-token token-tn">TN</span>: success.
+- Result < <span class="rpg-token token-tn">TN</span>: failure.
 - Roll a 1: failure with a complication.
-- Max on the die (e.g., 10 on d10): critical success + extra benefit.
+- Max on the die (e.g., 10 on <span class="rpg-token token-d10">d10</span>): critical success + extra benefit.
 
 Extra benefit examples: faster, quieter, safer, bigger effect, better position.
 
 
 ### 4.4 Shifting difficulty by a step
-Instead of math, the GM shifts TN by one step:
-- worse conditions → TN up (e.g., 6 → 8),
-- better conditions → TN down (e.g., 8 → 6).
+Instead of math, the GM shifts <span class="rpg-token token-tn">TN</span> by one step:
+- worse conditions → <span class="rpg-token token-tn">TN</span> up (e.g., 6 → 8),
+- better conditions → <span class="rpg-token token-tn">TN</span> down (e.g., 8 → 6).
 
 Your job: create better conditions via description (cover, prep, tools, plan).
 
 
 ### 4.5 Help from an ally
 An ally can spend their Action to help. For that roll you may bump your die:
-- d6→d8→d10→d12→d20.
+- <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>.
 
 The help must make sense (covering, distraction, handing tools).
 
 
 ### Test example
 You try to open a blocked passage quickly.
-- GM: “Dexterity, TN 6.”
-- You roll D d10 = 7 → success: passage opens.
+- GM: “Dexterity, <span class="rpg-token token-tn">TN</span> 6.”
+- You roll D <span class="rpg-token token-d10">d10</span> = 7 → success: passage opens.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 - 1 square is the basic unit of distance.
 - Movement per turn: up to 5 squares.
@@ -159,7 +236,8 @@ You try to open a blocked passage quickly.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### 6.1 Your turn
 - Move up to 5 squares and take 1 Action.
@@ -176,9 +254,9 @@ Actions include: attack, use gear, attribute test, help, use Magic.
 ### 6.2 Attacks
 - Melee: Strength roll.
 - Ranged: Dexterity roll.
-- The GM states the foe’s TN.
+- The GM states the foe’s <span class="rpg-token token-tn">TN</span>.
 
-Default foe TN:
+Default foe <span class="rpg-token token-tn">TN</span>:
 - Minion: 6
 - Elite: 8
 - Boss: 12
@@ -203,7 +281,7 @@ Default foe TN:
 ---
 
 ### 6.4 Misses and retaliation
-If you miss (result < TN) and the foe could hit back, you lose 1 Heart.
+If you miss (result < <span class="rpg-token token-tn">TN</span>) and the foe could hit back, you lose 1 Heart.
 - Common in melee.
 - At range it depends on cover/position.
 
@@ -223,20 +301,21 @@ Tactical lesson: position yourself to avoid retaliation on a miss (cover, distan
 
 ### Short turn example
 - Move: dash 3 squares to cover.
-- Action: shoot (D). GM: “TN 6, but target has cover → TN 8.” You roll d10=9 → hit.
+- Action: shoot (D). GM: “<span class="rpg-token token-tn">TN</span> 6, but target has cover → <span class="rpg-token token-tn">TN</span> 8.” You roll <span class="rpg-token token-d10">d10</span>=9 → hit.
 
 
 
-<div style="page-break-after: always;"></div>
 
-Magic is the “special effects” mechanic. You describe the effect; the GM sets TN and Mana cost.
+---
+
+Magic is the “special effects” mechanic. You describe the effect; the GM sets <span class="rpg-token token-tn">TN</span> and Mana cost.
 
 
 ### 7.1 Costs and tiers
-- Trick: TN 4, cost 0–1
-- Standard: TN 6, cost 1
-- Strong: TN 8, cost 2
-- Great power: TN 12, cost 3
+- Trick: <span class="rpg-token token-tn">TN</span> 4, cost 0–1
+- Standard: <span class="rpg-token token-tn">TN</span> 6, cost 1
+- Strong: <span class="rpg-token token-tn">TN</span> 8, cost 2
+- Great power: <span class="rpg-token token-tn">TN</span> 12, cost 3
 
 
 ### 7.2 Failure in Magic
@@ -255,40 +334,44 @@ Max roll with Magic grants an extra boon:
 
 ### Magic example
 You try a short 5‑square “blink”.
-- GM: “Standard: TN 6, cost 1.”
-- You pay 1 Mana, roll M d10=7 → success behind cover.
+- GM: “Standard: <span class="rpg-token token-tn">TN</span> 6, cost 1.”
+- You pay 1 Mana, roll M <span class="rpg-token token-d10">d10</span>=7 → success behind cover.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 After a conflict, if you have a safe moment and basic rest conditions:
 - Hearts and Mana return to full.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 After an adventure choose one:
-- bump S/D/M die size: d6→d8→d10→d12→d20,
+- bump S/D/M die size: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
 - or +1 Heart (max 7),
 - or +1 Mana (max 5).
 
 
 
-<div style="page-break-after: always;"></div>
 
-If you only have a d6, replace die sizes with thresholds:
+---
+
+If you only have a <span class="rpg-token token-d6">d6</span>, replace die sizes with thresholds:
 - Master 3+, Trained 4+, Novice 5+, Untrained 6.
 
 The GM may raise/lower your threshold by one step for situation or help.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 - Always say what you do and why. Intent helps the GM pick clear stakes.
-- If TN is high, don’t brute‑force the roll — change the situation (cover, tools, help, new route).
+- If <span class="rpg-token token-tn">TN</span> is high, don’t brute‑force the roll — change the situation (cover, tools, help, new route).
 - Coordinate: one helps, the other rolls.
 - In combat, cover and position often matter more than the roll.
 

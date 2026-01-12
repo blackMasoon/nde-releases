@@ -1,3 +1,75 @@
+---
+pdf_options:
+  displayHeaderFooter: true
+  headerTemplate: |-
+    <div style="font-size: 8px; width: 100%; text-align: center; color: #b91c1c; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1px; padding-bottom: 5px;">
+      NANO DUNGEON ENGINE v1.2
+    </div>
+  footerTemplate: |-
+    <div style="font-size: 8px; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; color: #78716c; font-family: 'Cinzel', serif;">
+      <span>Nano Dungeon Engine</span>
+      <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
+    </div>
+  margin:
+    top: "20mm"
+    bottom: "20mm"
+    left: "20mm"
+    right: "20mm"
+generated_at: "2026-01-12T10:14:57.822Z"
+---
+
+
+<style>
+    body > h1:first-of-type, .markdown-body > h1:first-of-type { 
+        text-align: center; 
+        font-size: 2.5em; 
+        border-bottom: 2px solid #b91c1c; 
+        padding-bottom: 0.5em;
+        margin-bottom: 2em;
+    }
+</style>
+
+<style>
+    h1 { color: #1c1917; }
+    
+    /* Dice & Tokens */
+    .rpg-token {
+        display: inline-block;
+        padding: 0 0.3em;
+        border-radius: 0.25em;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+        white-space: nowrap;
+        font-size: 0.9em;
+    }
+    .token-d4 { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-d6 { background-color: #e2e8f0; color: #1e293b; border: 1px solid #94a3b8; }
+    .token-d8 { background-color: #bfdbfe; color: #1e40af; border: 1px solid #60a5fa; }
+    .token-d10 { background-color: #d8b4fe; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
+    .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
+    .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    
+    /* Footer Styling */
+    .pdf-footer {
+        font-family: 'System-ui', sans-serif;
+        font-size: 9px;
+        color: #78716c;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        border-top: 1px solid #e7e5e4;
+        padding-top: 8px;
+    }
+    .footer-logo { height: 16px; vertical-align: middle; opacity: 0.6; margin-left: 10px; }
+    
+    /* Density Adjustments */
+    h1, h2, h3, h4 { margin-top: 1em; margin-bottom: 0.5em; }
+    p, ul, ol, blockquote { margin-bottom: 0.6em; }
+    hr { margin: 1.5em 0; border: 0; border-top: 1px solid #e7e5e4; }
+</style>
 # Księga Gracza
 
 
@@ -5,7 +77,8 @@
 ---
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### MG opisuje sytuację i mówi, co jest możliwe.
 - Ty mówisz, **co robisz** i **jaki chcesz efekt**.
@@ -15,17 +88,18 @@
 - Ty mówisz, **co robisz** i **jaki chcesz efekt**.
 - Jeśli wynik jest niepewny, MG mówi:
   1) jakiej cechy używasz (S/Z/M),
-  2) jaka jest trudność (TN),
+  2) jaka jest trudność (<span class="rpg-token token-tn">TN</span>),
   3) co może się stać przy porażce.
-- Ty rzucasz **jedną kością** swojej cechy i patrzysz, czy wynik ≥ TN.
+- Ty rzucasz **jedną kością** swojej cechy i patrzysz, czy wynik ≥ <span class="rpg-token token-tn">TN</span>.
 
 
 ### Najkrótsza zasada
-**Rzuć kością cechy. Wynik ≥ TN = sukces.**
+**Rzuć kością cechy. Wynik ≥ <span class="rpg-token token-tn">TN</span> = sukces.**
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 Twoja postać ma:
 - **Rolę** (Wojownik / Łotr / Mag),
@@ -42,7 +116,7 @@ Twoja postać ma:
 
 
 ### 2.2 Kości cech
-Każda cecha ma swoją kość (np. d6, d8, d10, d12, d20). Zawsze rzucasz **jedną** kością.
+Każda cecha ma swoją kość (np. <span class="rpg-token token-d6">d6</span>, <span class="rpg-token token-d8">d8</span>, <span class="rpg-token token-d10">d10</span>, <span class="rpg-token token-d12">d12</span>, <span class="rpg-token token-d20">d20</span>). Zawsze rzucasz **jedną** kością.
 - Większa kość = większa szansa na wysokie wyniki.
 
 
@@ -52,13 +126,14 @@ Każda cecha ma swoją kość (np. d6, d8, d10, d12, d20). Zawsze rzucasz **jedn
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### Krok 1: Wybierz rolę
 Wybierz jedną rolę. Ustawia startowe kości cech:
-- **Wojownik:** S d10, Z d6, M d6
-- **Łotr:** S d6, Z d10, M d6
-- **Mag:**  S d6, Z d6,  M d10
+- **Wojownik:** S <span class="rpg-token token-d10">d10</span>, Z <span class="rpg-token token-d6">d6</span>, M <span class="rpg-token token-d6">d6</span>
+- **Łotr:** S <span class="rpg-token token-d6">d6</span>, Z <span class="rpg-token token-d10">d10</span>, M <span class="rpg-token token-d6">d6</span>
+- **Mag:**  S <span class="rpg-token token-d6">d6</span>, Z <span class="rpg-token token-d6">d6</span>,  M <span class="rpg-token token-d10">d10</span>
 
 
 ### Krok 2: Zapisz zasoby
@@ -70,7 +145,7 @@ Wybierz jedną rolę. Ustawia startowe kości cech:
 Talenty to krótkie hasła opisujące, w czym jesteś dobry.
 - Przykłady neutralne: „Negocjator”, „Zwiadowca”, „Mechanik”, „Medyk”, „Atleta”, „Analityk”, „Haker”.
 
-**Jak działają Talenty:** jeśli Talent realnie pomaga w teście, MG może **obniżyć trudność (TN) o 1 stopień**.
+**Jak działają Talenty:** jeśli Talent realnie pomaga w teście, MG może **obniżyć trudność (<span class="rpg-token token-tn">TN</span>) o 1 stopień**.
 - Zwykle 1 Talent na 1 test.
 - Talent nie zastępuje opisu działania — pomaga, gdy faktycznie ma sens.
 
@@ -86,14 +161,15 @@ Sprzęt w tej grze najczęściej działa jako **„pozwolenie”**: masz coś, w
 
 ### Przykład postaci
 - Rola: Łotr
-- S d6, Z d10, M d6
+- S <span class="rpg-token token-d6">d6</span>, Z <span class="rpg-token token-d10">d10</span>, M <span class="rpg-token token-d6">d6</span>
 - Życie 5, Mana 3
 - Talenty: „Zwiadowca”, „Negocjator”
 - Sprzęt: narzędzie dystansowe, wytrychy, lina, latarka
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### 4.1 Kiedy rzucasz
 Rzucasz, gdy:
@@ -103,60 +179,61 @@ Rzucasz, gdy:
 Jeśli coś jest oczywiste i bez presji, MG może powiedzieć „udaje się” bez rzutu.
 
 
-### 4.2 Trudności (TN)
+### 4.2 Trudności (<span class="rpg-token token-tn">TN</span>)
 Używane są 4 poziomy:
-- **TN 4 — Łatwe**
-- **TN 6 — Normalne**
-- **TN 8 — Trudne**
-- **TN 12 — Bohaterskie**
+- **<span class="rpg-token token-tn">TN</span> 4 — Łatwe**
+- **<span class="rpg-token token-tn">TN</span> 6 — Normalne**
+- **<span class="rpg-token token-tn">TN</span> 8 — Trudne**
+- **<span class="rpg-token token-tn">TN</span> 12 — Bohaterskie**
 
-MG wybiera TN. Ty nie musisz go „zgadywać” — MG po prostu mówi, jaka jest trudność.
+MG wybiera <span class="rpg-token token-tn">TN</span>. Ty nie musisz go „zgadywać” — MG po prostu mówi, jaka jest trudność.
 
 
 ### Wyniki Testu
 
-> **Poziom Trudności (TN)**: 4 (Łatwy), 6 (Normalny), 8 (Trudny).
+> **Poziom Trudności (<span class="rpg-token token-tn">TN</span>)**: 4 (Łatwy), 6 (Normalny), 8 (Trudny).
 > 
 > **Wynik Rzutu:**
 > - **1**: Porażka + Komplikacja.
-> - **< TN**: Porażka.
-> - **≥ TN**: Sukces.
+> - **< <span class="rpg-token token-tn">TN</span>**: Porażka.
+> - **≥ <span class="rpg-token token-tn">TN</span>**: Sukces.
 > - **Max (10/20)**: Sukces + Korzyść.
 
 ---
 
 ### 4.3 Wyniki rzutu
-- **Wynik ≥ TN:** sukces.
-- **Wynik < TN:** porażka.
+- **Wynik ≥ <span class="rpg-token token-tn">TN</span>:** sukces.
+- **Wynik < <span class="rpg-token token-tn">TN</span>:** porażka.
 - **Wyrzucona 1:** porażka z komplikacją.
-- **Maks na kości** (np. 10 na d10): sukces wyjątkowy + dodatkowa korzyść.
+- **Maks na kości** (np. 10 na <span class="rpg-token token-d10">d10</span>): sukces wyjątkowy + dodatkowa korzyść.
 
 **Dodatkowa korzyść** (przykłady): szybciej, ciszej, bezpieczniej, większy efekt, lepsza pozycja.
 
 
 ### 4.4 Zmiany trudności „o stopień”
-Zamiast liczyć bonusy, MG czasem zmienia TN o 1 stopień:
-- gorsze warunki → TN wyżej (np. 6 → 8),
-- lepsze warunki → TN niżej (np. 8 → 6).
+Zamiast liczyć bonusy, MG czasem zmienia <span class="rpg-token token-tn">TN</span> o 1 stopień:
+- gorsze warunki → <span class="rpg-token token-tn">TN</span> wyżej (np. 6 → 8),
+- lepsze warunki → <span class="rpg-token token-tn">TN</span> niżej (np. 8 → 6).
 
 Twoja rola jako gracza: **twórz lepsze warunki** przez opis i decyzje (osłona, przygotowanie, narzędzia, plan).
 
 
 ### 4.5 Pomoc sojusznika
 Sojusznik może zużyć swoją Akcję, by ci pomóc. Wtedy na ten jeden rzut możesz:
-- podbić kość o 1 rozmiar: **d6→d8→d10→d12→d20**.
+- podbić kość o 1 rozmiar: **<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>**.
 
 Pomoc musi mieć sens w opisie (np. osłanianie, odwrócenie uwagi, podanie narzędzi).
 
 
 ### Przykład testu
 Chcesz szybko otworzyć zablokowane przejście.
-- MG: „To Zręczność, TN 6.”
-- Rzucasz Z d10 i wypada 7 → sukces: przejście otwarte.
+- MG: „To Zręczność, <span class="rpg-token token-tn">TN</span> 6.”
+- Rzucasz Z <span class="rpg-token token-d10">d10</span> i wypada 7 → sukces: przejście otwarte.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### 1 kratka
 
@@ -167,7 +244,8 @@ Chcesz szybko otworzyć zablokowane przejście.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### 6.1 Jak wygląda tura
 W swojej turze masz:
@@ -182,19 +260,19 @@ Akcja to np.: atak, użycie sprzętu, test cechy, pomoc, użycie Magii.
 > 1) Wybierz cel (w zasięgu i w linii widzenia).
 > 2) Wybierz broń/czar.
 > 3) Sprawdź, jakiej Cechy używa (np. Siła wręcz, Zręczność na dystans, Magia do czaru).
-> 4) **Rzuć.** Porównaj z **TN** przeciwnika.
+> 4) **Rzuć.** Porównaj z **<span class="rpg-token token-tn">TN</span>** przeciwnika.
 
 ---
 
 ### 6.2 Atak
 - **Wręcz:** rzut **Siły (S)**.
 - **Dystans:** rzut **Zręczności (Z)**.
-- MG mówi TN przeciwnika.
+- MG mówi <span class="rpg-token token-tn">TN</span> przeciwnika.
 
-Domyślne TN przeciwników:
-- **Pachołek:** TN 6
-- **Elita:** TN 8
-- **Boss:** TN 12
+Domyślne <span class="rpg-token token-tn">TN</span> przeciwników:
+- **Pachołek:** <span class="rpg-token token-tn">TN</span> 6
+- **Elita:** <span class="rpg-token token-tn">TN</span> 8
+- **Boss:** <span class="rpg-token token-tn">TN</span> 12
 
 
 ### Trafienie
@@ -213,7 +291,7 @@ Domyślne TN przeciwników:
 
 ### Pudło i Odwet
 
-> Walka ma ryzyko. Jeśli **nie trafisz** (wynik < TN) lub wyrzucisz **1**:
+> Walka ma ryzyko. Jeśli **nie trafisz** (wynik < <span class="rpg-token token-tn">TN</span>) lub wyrzucisz **1**:
 > - Przeciwnik kontratakuje: tracisz **1 Serce**.
 > - Albo dzieje się inna logiczna komplikacja (np. tracisz broń, zostajesz przewrócony).
 > 
@@ -222,7 +300,7 @@ Domyślne TN przeciwników:
 ---
 
 ### 6.4 Pudło i „odwet”
-Jeśli **pudłujesz** (wynik < TN) i przeciwnik mógł cię realnie dosięgnąć, tracisz **1 Serce**.
+Jeśli **pudłujesz** (wynik < <span class="rpg-token token-tn">TN</span>) i przeciwnik mógł cię realnie dosięgnąć, tracisz **1 Serce**.
 - W zwarciu jest to częste.
 - Przy atakach dystansowych dużo zależy od osłony i sytuacji.
 
@@ -247,20 +325,21 @@ Gdy spadasz do 0 Serc:
 
 ### Przykład krótkiej tury
 - Ruch: podbiegasz 3 kratki do osłony.
-- Akcja: strzelasz (Z). MG: „TN 6, ale cel jest za osłoną → TN 8”. Rzucasz d10=9 → trafienie.
+- Akcja: strzelasz (Z). MG: „<span class="rpg-token token-tn">TN</span> 6, ale cel jest za osłoną → <span class="rpg-token token-tn">TN</span> 8”. Rzucasz <span class="rpg-token token-d10">d10</span>=9 → trafienie.
 
 
 
-<div style="page-break-after: always;"></div>
 
-Magia to mechanika „efektów specjalnych”. Ty opisujesz efekt, MG ustala TN i koszt Many.
+---
+
+Magia to mechanika „efektów specjalnych”. Ty opisujesz efekt, MG ustala <span class="rpg-token token-tn">TN</span> i koszt Many.
 
 
 ### 7.1 Koszty i poziomy
-- **Sztuczka:** TN 4, koszt 0–1
-- **Standard:** TN 6, koszt 1
-- **Silny efekt:** TN 8, koszt 2
-- **Wielka moc:** TN 12, koszt 3
+- **Sztuczka:** <span class="rpg-token token-tn">TN</span> 4, koszt 0–1
+- **Standard:** <span class="rpg-token token-tn">TN</span> 6, koszt 1
+- **Silny efekt:** <span class="rpg-token token-tn">TN</span> 8, koszt 2
+- **Wielka moc:** <span class="rpg-token token-tn">TN</span> 12, koszt 3
 
 
 ### 7.2 Porażka w Magii
@@ -279,22 +358,24 @@ Maks na kości Magii daje dodatkową korzyść:
 
 ### Przykład Magii
 Chcesz wykonać krótki „skok” na 5 kratek.
-- MG: „To Standard: TN 6, koszt 1.”
-- Płacisz 1 Manę, rzucasz M d10=7 → sukces: przeskakujesz za osłonę.
+- MG: „To Standard: <span class="rpg-token token-tn">TN</span> 6, koszt 1.”
+- Płacisz 1 Manę, rzucasz M <span class="rpg-token token-d10">d10</span>=7 → sukces: przeskakujesz za osłonę.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 Po konflikcie, jeśli macie bezpieczną chwilę i podstawowe warunki odpoczynku:
 - Życie i Mana wracają do pełna.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 Po przygodzie wybierasz **jedno**:
-- podbij S/Z/M o 1 rozmiar kości: d6→d8→d10→d12→d20,
+- podbij S/Z/M o 1 rozmiar kości: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
 - albo +1 Serce (max 7),
 - albo +1 Mana (max 5).
 
@@ -302,21 +383,23 @@ To oznacza rozwój bez dokładania kolejnych kości do rzutów.
 
 
 
-<div style="page-break-after: always;"></div>
 
-Jeśli na stole jest tylko d6, zamiast rozmiaru kości masz próg sukcesu:
+---
+
+Jeśli na stole jest tylko <span class="rpg-token token-d6">d6</span>, zamiast rozmiaru kości masz próg sukcesu:
 - Mistrz 3+, Wyszkolony 4+, Nowicjusz 5+, Bez biegłości 6.
 
 MG może podnosić/obniżać próg o 1 stopień za sytuację lub pomoc.
 
 
 
-<div style="page-break-after: always;"></div>
+
+---
 
 ### Zawsze mów
 
 - Zawsze mów: **co robisz** + **po co**. „Chcę wcisnąć dźwignię” jest ok, ale „chcę wcisnąć dźwignię, żeby zamknąć przejście” jest jeszcze lepsze.
-- Jeśli TN jest wysokie: nie „męcz rzutu” — zmień sytuację (osłona, narzędzia, pomoc, inna droga).
+- Jeśli <span class="rpg-token token-tn">TN</span> jest wysokie: nie „męcz rzutu” — zmień sytuację (osłona, narzędzia, pomoc, inna droga).
 - Ustalajcie współpracę: jedna osoba pomaga, druga wykonuje test.
 - W walce szanuj osłonę i pozycję — często jest ważniejsza niż sam rzut.
 
