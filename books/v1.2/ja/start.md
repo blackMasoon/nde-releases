@@ -2,7 +2,7 @@
 pdf_options:
   displayHeaderFooter: true
   headerTemplate: |-
-    <div style="font-size: 7px; width: 100%; text-align: center; color: #a8a29e; font-family: 'Crimson Text', serif; letter-spacing: 1px; padding-bottom: 5px;">
+    <div style="font-size: 8px; width: 100%; text-align: center; color: #b91c1c; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 1px; padding-bottom: 5px;">
       NANO DUNGEON ENGINE v1.2
     </div>
   footerTemplate: |-
@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T09:19:50.270Z"
+generated_at: "2026-01-12T09:26:33.855Z"
 ---
 
 
