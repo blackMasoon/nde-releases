@@ -6,16 +6,16 @@ pdf_options:
       NANO DUNGEON ENGINE v1.2
     </div>
   footerTemplate: |-
-    <div class="pdf-footer">
-      <span style="font-family: 'Cinzel', serif; font-size: 8px; color: #78716c;">Nano Dungeon Engine</span>
-      <span style="transform: scale(0.8);">Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
+    <div style="font-size: 8px; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; color: #78716c; font-family: 'Cinzel', serif;">
+      <span>Nano Dungeon Engine</span>
+      <span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span>
     </div>
   margin:
     top: "20mm"
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T09:26:33.898Z"
+generated_at: "2026-01-12T09:33:47.595Z"
 ---
 
 
