@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T09:33:47.520Z"
+generated_at: "2026-01-12T20:13:48.769Z"
 ---
 
 
@@ -80,27 +80,103 @@ Automatic translation placeholder for pt
 
 ---
 
+### 1) Herói em 1 minuto
 
-
----
-
-
-
----
-
-
-
----
-
-
-
----
-
-
-
----
+- Papel (escolha um):
+  - Guerreiro — mestre da força e do combate corpo a corpo
+  - Ladino — mestre da velocidade, furtividade e tiros
+  - Mago — mestre de feitiços e conhecimento
+- Atributos e dados: Força (F), Destreza (D), Magia (M).
+  - Guerreiro: F <span class="rpg-token token-d10">d10</span>, D <span class="rpg-token token-d6">d6</span>, M <span class="rpg-token token-d6">d6</span>
+  - Ladino: F <span class="rpg-token token-d6">d6</span>, D <span class="rpg-token token-d10">d10</span>, M <span class="rpg-token token-d6">d6</span>
+  - Mago: F <span class="rpg-token token-d6">d6</span>, D <span class="rpg-token token-d6">d6</span>, M <span class="rpg-token token-d10">d10</span>
+- Vida: 5 Corações. Mana: 3 (usada em feitiços).
+- Equipamento: arma, armadura leve, 3 itens adequados ao papel.
+Exemplo: Ladino tem Destreza <span class="rpg-token token-d10">d10</span>, então usa <span class="rpg-token token-d10">d10</span> para tiros.
 
 
 
 ---
+
+### 2) Como você executa ações
+
+1. Escolha a característica apropriada (S/Z/M) e role o dado dessa característica.
+2. Compare com o nível de dificuldade (<span class="rpg-token token-tn">TN</span>):
+   - Fácil 4, Normal 6, Difícil 8, Heroico 12.
+3. Resultado:
+   - 1 no dado — falha com complicação (barulho, perda de tempo, ferimento leve, etc.).
+   - Resultado < <span class="rpg-token token-tn">TN</span> — falha.
+   - Resultado ≥ <span class="rpg-token token-tn">TN</span> — sucesso.
+   - Máximo no dado (por exemplo, 10 em <span class="rpg-token token-d10">d10</span>, 20 em <span class="rpg-token token-d20">d20</span>) — sucesso excepcional com benefício adicional.
+Melhorias sem contagem:
+- Situação melhor/pior: diminua/aumente a <span class="rpg-token token-tn">TN</span> em 1 grau (por exemplo, 6 → 8 por cobertura).
+- Ajuda de um aliado (com sua ação): para este lançamento, "aumente" o dado em um tamanho (<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>).
+Exemplo: O Guerreiro arromba a porta (Normal 6). Ele rola <span class="rpg-token token-d10">d10</span> e tira 10 — sucesso excepcional: a porta voa, e o guarda atrás dela cai.
+
+
+
+---
+
+### 3) Movimento e luta no tabuleiro
+
+- Movimento: até 5 quadrados (diagonais permitidas).
+- Sua vez: Movimento + 1 Ação (por exemplo, ataque, feitiço, busca, levantar alavanca).
+- Ataque:
+  - Corpo a corpo (C): rolagem contra a <span class="rpg-token token-tn">TN</span> do oponente.
+  - Distância (D): a cobertura do alvo aumenta a <span class="rpg-token token-tn">TN</span> em 1 grau.
+- <span class="rpg-token token-tn">TN</span> dos oponentes: Peão 6, Elite 8, Chefe 12.
+- Efeitos do acerto: Peão — cai após ser atingido; Elite — o GM pode exigir condições favoráveis; Chefe — tem 3 Feridas (acerto = 1 Ferida). Sucesso excepcional contra o Chefe = 2 Feridas.
+- Retaliação: se você errar em combate corpo a corpo ou em alcance de retaliação, perde 1 Coração (a menos que tenha cobertura total).
+Exemplo: Mago (D <span class="rpg-token token-d6">d6</span>) atira com uma funda em um peão atrás de uma caixa: <span class="rpg-token token-tn">TN</span> 6 + cobertura → 8. O Mago pede ajuda ao Ladino (aumenta o dado para <span class="rpg-token token-d8">d8</span>) e muda de posição para uma melhor (<span class="rpg-token token-tn">TN</span> cai para 6). <span class="rpg-token token-d8">d8</span>=7 — atingido.
+
+
+
+---
+
+### 4) Magia (prosto)
+
+- Lançar um feitiço: descreva o efeito, gaste Mana, lance Magia (M).
+  - Truque (chama, estrondo, névoa) — <span class="rpg-token token-tn">TN</span> 4, custo 0–1 Mana.
+  - Projétil/Barreira/Salto de 5 quadrados — <span class="rpg-token token-tn">TN</span> 6, custo 1 Mana.
+  - Área/Cura +2 Corações/Paralisia — <span class="rpg-token token-tn">TN</span> 8, custo 2 Mana.
+  - Grande poder (ponte de gelo, tempestade de fogo) — <span class="rpg-token token-tn">TN</span> 12, custo 3 Mana.
+- Falha: Mana é perdida; ocorre uma pequena consequência (falta de ar -1 Coração ou atenção indesejada dos inimigos).
+- Descanso após a batalha: você recupera toda a Mana; um descanso seguro também restaura Corações.
+Exemplo: “Relâmpago” (teleporte curto de 5 quadrados): <span class="rpg-token token-tn">TN</span> 6, custo 1 Mana. O mago <span class="rpg-token token-d10">d10</span> rola 7 — salto bem-sucedido para a barreira.
+
+
+
+---
+
+### 5) Queda e tratamento
+
+- 0 Coração: derrubado (não está funcionando). Um aliado pode usar uma ação para te levantar para 1 Coração.
+- Após o combate, com um breve descanso e uma refeição, vocês retornam à plenitude de Corações e Mana.
+Exemplo: O Ladino cai para 0. O Guerreiro o ajuda a se levantar — o Ladino volta para 1 Coração.
+
+
+
+---
+
+### 6) Desenvolvimento de PERSONAGENS
+
+Após a aventura, escolha uma:
+- Aumente um atributo em um tamanho de dado: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
+- ou +1 Coração (máx 7),
+- ou +1 Mana (máx 5).
+Exemplo: O Guerreiro aumenta a Força de <span class="rpg-token token-d10">d10</span> para <span class="rpg-token token-d12">d12</span> — fica mais fácil atingir <span class="rpg-token token-tn">TN</span> 12.
+
+
+
+---
+
+### 7) Wariant só-<span class="rpg-token token-d6">d6</span>
+
+Quando você tem apenas um dado <span class="rpg-token token-d6">d6</span>:
+- Em vez de tamanhos de dados, cada atributo tem um limiar de sucesso:
+  - Mestre 3+, Treinado 4+, Novato 5+, Sem proficiência 6.
+- A <span class="rpg-token token-tn">TN</span> ainda muda a situação em 1 grau (mais fácil/difícil).
+- Ajuda: reduza o limiar em 1 (por exemplo, de 4+ para 3+ para este teste).
+- Desenvolvimento: aumente o nível de um atributo (por exemplo, Treinado 4+ → Mestre 3+) ou +1 Coração/Mana.
+Exemplo: Tiro do Ladrão (Treinado 4+) em um alvo com leve cobertura (um grau mais difícil) requer 5+. Rolagem <span class="rpg-token token-d6">d6</span>=5 — acerto.
 

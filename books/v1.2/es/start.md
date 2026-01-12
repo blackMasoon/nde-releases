@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-12T09:33:47.629Z"
+generated_at: "2026-01-12T20:13:48.923Z"
 ---
 
 
@@ -80,27 +80,103 @@ Automatic translation placeholder for es
 
 ---
 
+### 1) Héroe en 1 minuto
 
-
----
-
-
-
----
-
-
-
----
-
-
-
----
-
-
-
----
+- Rol (elige uno):
+  - Guerrero — maestro de la fuerza y el combate cuerpo a cuerpo
+  - Pícaro — maestro de la velocidad, el sigilo y los disparos
+  - Mago — maestro de los hechizos y el conocimiento
+- Características y dados: Fuerza (F), Destreza (D), Magia (M).
+  - Guerrero: F <span class="rpg-token token-d10">d10</span>, D <span class="rpg-token token-d6">d6</span>, M <span class="rpg-token token-d6">d6</span>
+  - Pícaro: F <span class="rpg-token token-d6">d6</span>, D <span class="rpg-token token-d10">d10</span>, M <span class="rpg-token token-d6">d6</span>
+  - Mago: F <span class="rpg-token token-d6">d6</span>, D <span class="rpg-token token-d6">d6</span>, M <span class="rpg-token token-d10">d10</span>
+- Vida: 5 Corazones. Mana: 3 (usado para hechizos).
+- Equipamiento: arma, armadura ligera, 3 objetos adecuados para el rol.
+Ejemplo: El Pícaro tiene Destreza <span class="rpg-token token-d10">d10</span>, por lo que usa <span class="rpg-token token-d10">d10</span> para los disparos.
 
 
 
 ---
+
+### 2) ¿Cómo realizas acciones?
+
+1. Elige la característica adecuada (S/Z/M) y lanza el dado de esa característica.
+2. Compara con el nivel de dificultad (<span class="rpg-token token-tn">TN</span>):
+   - Fácil 4, Normal 6, Difícil 8, Heroico 12.
+3. Resultado:
+   - 1 en el dado — fracaso con complicación (ruido, pérdida de tiempo, pequeña herida, etc.).
+   - Resultado < <span class="rpg-token token-tn">TN</span> — fracaso.
+   - Resultado ≥ <span class="rpg-token token-tn">TN</span> — éxito.
+   - Máximo en el dado (por ejemplo, 10 en <span class="rpg-token token-d10">d10</span>, 20 en <span class="rpg-token token-d20">d20</span>) — éxito excepcional con un beneficio adicional.
+Mejoras sin contar:
+- Mejor/peor situación: baja/aumenta la <span class="rpg-token token-tn">TN</span> en 1 grado (por ejemplo, 6 → 8 por cobertura).
+- Ayuda de un aliado (con su acción): para esta tirada "aumenta" el dado en un tamaño (<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>).
+Ejemplo: El guerrero fuerza la puerta (Normal 6). Lanza un <span class="rpg-token token-d10">d10</span> y saca 10 — éxito excepcional: la puerta vuela, y el guardia que está detrás de ella se cae.
+
+
+
+---
+
+### 3) Movimiento y lucha en el tablero
+
+- Movimiento: hasta 5 casillas (diagonales permitidas).
+- Tu turno: Movimiento + 1 Acción (por ejemplo, ataque, hechizo, búsqueda, levantar palanca).
+- Ataque:
+  - Cuerpo a cuerpo (S): tirada contra la <span class="rpg-token token-tn">TN</span> del oponente.
+  - A distancia (Z): la cobertura del objetivo aumenta la <span class="rpg-token token-tn">TN</span> en 1 grado.
+- <span class="rpg-token token-tn">TN</span> de los oponentes: Peón 6, Élite 8, Jefe 12.
+- Efectos de un impacto: Peón — cae tras ser impactado; Élite — el MJ puede requerir condiciones favorables; Jefe — tiene 3 Heridas (un impacto = 1 Herida). Éxito excepcional contra el Jefe = 2 Heridas.
+- Contraataque: si fallas en cuerpo a cuerpo o en el rango de contraataque, pierdes 1 Corazón (a menos que tengas cobertura total).
+Ejemplo: Mago (Z <span class="rpg-token token-d6">d6</span>) dispara con una honda a un peón detrás de una caja: <span class="rpg-token token-tn">TN</span> 6 + cobertura → 8. El Mago pide ayuda al Pícaro (aumenta el dado a <span class="rpg-token token-d8">d8</span>) y cambia de posición a una mejor (<span class="rpg-token token-tn">TN</span> baja a 6). <span class="rpg-token token-d8">d8</span>=7 — impactado.
+
+
+
+---
+
+### 4) Magia (prosto)
+
+- Lanzar un hechizo: describe el efecto, gasta Maná, lanza Magia (M).
+  - Truco (llama, estruendo, niebla) — <span class="rpg-token token-tn">TN</span> 4, costo 0–1 Maná.
+  - Proyectil/Protección/Salto 5 casillas — <span class="rpg-token token-tn">TN</span> 6, costo 1 Maná.
+  - Área/Sanación +2 Corazones/Parálisis — <span class="rpg-token token-tn">TN</span> 8, costo 2 Maná.
+  - Gran poder (puente de hielo, tormenta de fuego) — <span class="rpg-token token-tn">TN</span> 12, costo 3 Maná.
+- Fracaso: el Maná se pierde; ocurre una pequeña consecuencia (falta de aliento -1 Corazón o atención no deseada de los enemigos).
+- Descanso después de la batalla: recuperas todo el Maná; un descanso seguro también restaura Corazones.
+Ejemplo: “Destello” (teleportación corta 5 casillas): <span class="rpg-token token-tn">TN</span> 6, costo 1 Maná. El mago <span class="rpg-token token-d10">d10</span> lanza 7 — salto exitoso tras la protección.
+
+
+
+---
+
+### 5) Caída y tratamiento
+
+- 0 Corazón: caído (no estás funcionando). Un aliado puede gastar una acción para levantarte a 1 Corazón.
+- Después del combate, con un breve descanso y una comida, regresan a la plenitud de Corazones y Maná.
+Ejemplo: El pícaro cae a 0. El guerrero le ayuda a levantarse — el pícaro regresa a 1 Corazón.
+
+
+
+---
+
+### 6) Desarrollo de PERSONAJES
+
+Después de la aventura elige una:
+- Aumenta un atributo en un tamaño de dado: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
+- o +1 Corazón (máx. 7),
+- o +1 Maná (máx. 5).
+Ejemplo: El Guerrero aumenta su Fuerza de <span class="rpg-token token-d10">d10</span> a <span class="rpg-token token-d12">d12</span> — es más fácil alcanzar <span class="rpg-token token-tn">TN</span> 12.
+
+
+
+---
+
+### 7) Variante solo-<span class="rpg-token token-d6">d6</span>
+
+Cuando solo tienen un dado <span class="rpg-token token-d6">d6</span>:
+- En lugar de tamaños de dados, cada atributo tiene un umbral de éxito:
+  - Maestro 3+, Entrenado 4+, Novato 5+, Sin habilidad 6.
+- La <span class="rpg-token token-tn">TN</span> sigue cambiando la situación en 1 grado (más fácil/más difícil).
+- Ayuda: baja el umbral en 1 (por ejemplo, de 4+ a 3+ para esta tirada).
+- Desarrollo: sube el nivel de un atributo (por ejemplo, Entrenado 4+ → Maestro 3+) o +1 Corazón/Mana.
+Ejemplo: Tiro de Pícaro (Entrenado 4+) a un objetivo en cobertura ligera (un grado más difícil) requiere 5+. Tirada <span class="rpg-token token-d6">d6</span>=5 — impacto.
 
