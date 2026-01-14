@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'books/**/*.md'
+      - 'games/**/*.md'  # CHANGED: Added games path
     branches:
       - main
   workflow_dispatch:
@@ -43,7 +44,7 @@ jobs:
              if (!fs.existsSync(dir)) return files;
              const fileList = fs.readdirSync(dir);
              for (const file of fileList) {
-               const name = `${dir}/${file}`;
+               const name = \`\${dir}/\${file}\`;
                if (fs.statSync(name).isDirectory()) {
                  getFiles(name, files);
                } else if (name.endsWith('.md')) {
@@ -55,11 +56,12 @@ jobs:
 
           (async () => {
             try {
-              const files = getFiles('books');
-              console.log(`Found ${files.length} markdown files.`);
+              // CHANGED: Added games directory
+              const files = [...getFiles('books'), ...getFiles('games')];
+              console.log(\`Found \${files.length} markdown files.\`);
 
               for (const file of files) {
-                console.log(`Converting ${file}...`);
+                console.log(\`Converting \${file}...\`);
                 const pdfPath = file.replace('.md', '.pdf');
                 await mdToPdf(
                   { path: file },
@@ -84,6 +86,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git add books/**/*.pdf
-          # -Xtheirs wymusi użycie NOWO wygenerowanego PDF w razie konfliktu
+          # CHANGED: Added games path
+          git add books/**/*.pdf games/**/*.pdf
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-generate PDFs [skip ci]" && git pull --rebase -Xtheirs origin main && git push)
