@@ -44,7 +44,7 @@ jobs:
              if (!fs.existsSync(dir)) return files;
              const fileList = fs.readdirSync(dir);
              for (const file of fileList) {
-               const name = \`\${dir}/\${file}\`;
+               const name = `${dir}/${file}`;
                if (fs.statSync(name).isDirectory()) {
                  getFiles(name, files);
                } else if (name.endsWith('.md')) {
@@ -58,10 +58,10 @@ jobs:
             try {
               // CHANGED: Added games directory
               const files = [...getFiles('books'), ...getFiles('games')];
-              console.log(\`Found \${files.length} markdown files.\`);
+              console.log(`Found ${files.length} markdown files.`);
 
               for (const file of files) {
-                console.log(\`Converting \${file}...\`);
+                console.log(`Converting ${file}...`);
                 const pdfPath = file.replace('.md', '.pdf');
                 await mdToPdf(
                   { path: file },
