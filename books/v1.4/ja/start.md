@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-14T12:06:46.352Z"
+generated_at: "2026-01-15T07:57:22.428Z"
 ---
 
 
@@ -49,6 +49,11 @@ generated_at: "2026-01-14T12:06:46.352Z"
     .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
     .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
     .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-luck { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-power { background-color: #e9d5ff; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-heart { background-color: #fecaca; color: #991b1b; border: 1px solid #ef4444; }
+    .token-stat { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-math { background-color: #1e293b; color: #38bdf8; border: 1px solid #0f172a; }
     
     /* Footer Styling */
     .pdf-footer {
@@ -80,118 +85,180 @@ generated_at: "2026-01-14T12:06:46.352Z"
 
 ---
 
-### [ERROR] 1) Bohater w 1 minutę
-
-[Translation Failed] * **Koncept:** kim jesteś i w jakim gatunku grasz (1 zdanie).
-* **Rola (wybierz jedną):**
-
-  * **Szturm** – presja, walka, przełamywanie przeszkód
-  * **Specjalista** – skradanie, precyzja, technika, obserwacja
-  * **Adept** – moce, wiedza, wpływ, improwizacja
-* **Cechy (3):**
-
-  * **Siła (S)** – siła fizyczna, wytrzymałość, walka wręcz
-  * **Zręczność (Z)** – refleks, skradanie, strzelanie, pilotowanie
-  * **Moc (M)** – magia/psionika/technologia/blef/intuicja (zależnie od świata)
-* **Kości cech:** jedna cecha **<span class="rpg-token token-d12">k12</span>**, jedna **<span class="rpg-token token-d8">k8</span>**, jedna **<span class="rpg-token token-d6">k6</span>** (wybierz zgodnie z rolą).
-* **Serca:** 5. **Punkty Mocy:** 3 (wydajesz na moce i „zagrania specjalne”).
-Poniżej masz gotowy fragment do wklejenia (wariant A), w stylistyce krótkich zasad „1-page”.
-
-**Łut Szczęścia (jak działa):** wydaj **1 ŁS**, aby wybrać jedno:
-
-* **Przerzut** swojego testu (zostawiasz lepszy wynik), albo
-* **Podbicie kości o 1 stopień** na ten jeden rzut (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), albo
-* **Zamiana porażki na „sukces z kosztem”** — akcja się udaje, ale MG natychmiast dokłada cenę (np. tracisz czas, robisz hałas, zużywasz zasób, kończysz w gorszej pozycji, przyciągasz uwagę, psujesz sprzęt).
-
-**Odzysk ŁS:** na początku kolejnej sesji wracasz do limitu. MG może przyznać **+1 ŁS** za odważne ryzyko, świetną decyzję fabularną lub granie konsekwencjami.
-
-* **Ekwipunek:** 1 narzędzie „kluczowe” (np. miecz, karabin, zestaw hakerski), 1 ochrona (pancerz, tarcza energetyczna, kamuflaż), 3 drobiazgi pasujące do konceptu.
-
-**Przykład:** Specjalista: Z <span class="rpg-token token-d12">k12</span>, M <span class="rpg-token token-d8">k8</span>, S <span class="rpg-token token-d6">k6</span>. W cyberpunku M to „Hacking/Influence”; w fantasy M to „Magia/Wola”.
+### 1) 1分でヒーロー
 
 
+* **コンセプト:** あなたは誰で、どのジャンルでプレイしますか（1文）。
+* **ロール（1つ選択）:**
 
----
+  * **アサルト** – プレッシャー、戦闘、障害の突破
+  * **スペシャリスト** – スニーク、精度、技術、観察
+  * **アデプト** – 力、知識、影響、即興
+* **特徴（3つ）:**
 
-### 2) アクションの実行方法
+  * **力 (<span class="rpg-token token-stat">S</span>)** – 物理的な力、耐久性、近接戦闘
+  * **敏捷性 (<span class="rpg-token token-stat">Z</span>)** – 反射神経、スニーク、射撃、操縦
+  * **魔力 (<span class="rpg-token token-stat">M</span>)** – 魔法/サイコニクス/テクノロジー/ブラフ/直感（世界による）
+* **特徴のサイコロ:** 1つの特徴に**<span class="rpg-token token-d12">k12</span>**、1つに**<span class="rpg-token token-d8">k8</span>**、1つに**<span class="rpg-token token-d6">k6</span>**（ロールに応じて選択）。
+* **ハート:** 5. **マジックポイント:** 3（力や「特別なプレイ」に使用）。
+以下に「1ページ」スタイルの短いルールのための準備されたセクションがあります（バリアントA）。
 
-1. 適切な特性（S/Z/M）を選び、その特性のサイコロを振ります。
-2. 難易度（<span class="rpg-token token-tn">TN</span>）と比較します：
-   - 簡単 4、普通 6、難しい 8、英雄的 12。
-3. 結果：
-   - サイコロの出目が1 — 失敗（複雑な状況：騒音、時間の浪費、小さな怪我など）。
-   - 出目 < <span class="rpg-token token-tn">TN</span> — 失敗。
-   - 出目 ≥ <span class="rpg-token token-tn">TN</span> — 成功。
-   - サイコロの最大値（例：<span class="rpg-token token-d10">d10</span>で10、<span class="rpg-token token-d20">d20</span>で20） — 特別な成功と追加の利益。
-改善点を数えずに：
-- 状況の改善/悪化：<span class="rpg-token token-tn">TN</span>を1段階下げる/上げる（例：6 → 8は防御による）。
-- 仲間の助け（自分の行動で）：このロールのために「サイコロを1サイズ上げる」（<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>）。
-例：戦士がドアをこじ開ける（普通 6）。<span class="rpg-token token-d10">d10</span>を振って10が出る — 特別な成功：ドアが飛び出し、その後ろにいる兵士が転倒する。
+**幸運の一撃（動作方法）:** **1幸運ポイント**を消費して、1つを選択:
+
+* **テストの再ロール**（より良い結果を残す）、または
+* **その1回のロールでサイコロを1段階上げる**（**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**）、または
+* **失敗を「コストのある成功」に変える** — アクションは成功するが、GMはすぐに代償を追加する（例: 時間を失う、音を立てる、リソースを消費する、悪い位置に終わる、注意を引く、装備を壊す）。
+
+**幸運ポイントの回復:** 次のセッションの開始時に制限に戻ります。GMは大胆なリスク、素晴らしいストーリーの決定、または結果を考慮して**+1幸運ポイント**を与えることができます。
+
+* **装備:** 1つの「キー」ツール（例: 剣、ライフル、ハッキングキット）、1つの防具（アーマー、エネルギーシールド、カモフラージュ）、コンセプトに合った3つの小物。
+
+**例:** スペシャリスト: <span class="rpg-token token-stat">S</span> <span class="rpg-token token-d12">k12</span>, <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span>, <span class="rpg-token token-stat">S</span> <span class="rpg-token token-d6">k6</span>。サイバーパンクでは<span class="rpg-token token-stat">M</span>は「ハッキング/影響」であり、ファンタジーでは<span class="rpg-token token-stat">M</span>は「魔法/意志」です。
 
 
 
 ---
 
-### 3) ボード上の動きと戦い
+### 2) アクションの解決方法
 
-- 移動: 5マスまで（対角移動可）。
-- あなたのターン: 移動 + 1アクション（例: 攻撃、魔法、探索、レバーを引く）。
-- 攻撃:
-  - 近接 (S): 敵の<span class="rpg-token token-tn">TN</span>に対するロール。
-  - 遠距離 (Z): 対象の防御が<span class="rpg-token token-tn">TN</span>を1段階上げる。
-- 敵の<span class="rpg-token token-tn">TN</span>: 兵士 6、エリート 8、ボス 12。
-- 命中の結果: 兵士 — 命中で倒れる; エリート — GMが有利な条件を要求する場合がある; ボス — 3ダメージ（命中 = 1ダメージ）。ボスに対する特別な成功 = 2ダメージ。
-- 反撃: 近接攻撃や反撃範囲で外した場合、1ハートを失う（完全防御がない限り）。
-例: 魔法使い (Z <span class="rpg-token token-d6">d6</span>) が箱の後ろにいる兵士にスリングで攻撃する: <span class="rpg-token token-tn">TN</span> 6 + 防御 → 8。魔法使いは盗賊に助けを求め（サイコロを<span class="rpg-token token-d8">d8</span>に上げる）て、より良い位置に移動する（<span class="rpg-token token-tn">TN</span>が6に下がる）。<span class="rpg-token token-d8">d8</span>=7 — 命中。
+1. プレイヤーは**何をするか**と**どのように**（ゲームの世界での説明）を言います。
+2. GMは**難易度**と賭け（「失敗した場合に何が起こるか」）を決定します。
+3. 特徴のサイコロ（<span class="rpg-token token-stat">S</span>/<span class="rpg-token token-stat">Z</span>/<span class="rpg-token token-stat">M</span>）を振り、難易度と比較します。
 
+**難易度 (T):**
 
+* **3** 簡単、**4** 標準、**5** 難しい、**6** 非常に難しい、**8** 英雄的、**12** 伝説的。
 
----
+**サイコロの結果:**
 
-### 4) 魔法
+* **1** – 失敗と結果（必ず複雑化が発生）。
+* **< T** – 失敗（しかしシーンは続行：時間の浪費、騒音、悪化した状況、資源の喪失）。
+* **≥ T** – 成功。
+* **サイコロの最大値**（例：<span class="rpg-token token-d12">k12</span>で12、<span class="rpg-token token-d20">k20</span>で20） – 特別成功：追加の利点を得る。
 
-- 呪文を唱える: 効果を説明し、マナを消費し、魔法を発動する (M)。
-  - トリック (炎、轟音、霧) — <span class="rpg-token token-tn">TN</span> 4、コスト 0–1 マナ。
-  - 弾丸/シールド/ジャンプ 5マス — <span class="rpg-token token-tn">TN</span> 6、コスト 1 マナ。
-  - エリア/治療 +2 ハート/麻痺 — <span class="rpg-token token-tn">TN</span> 8、コスト 2 マナ。
-  - 大魔法 (氷の橋、火の嵐) — <span class="rpg-token token-tn">TN</span> 12、コスト 3 マナ。
-- 失敗: マナが無駄になる; 小さな結果が生じる (息切れ −1 ハート または 敵の不本意な注意を引く)。
-- 戦闘後の休息: 全てのマナを回復する; 安全な休息はハートも回復する。
-例: 「閃光」 (短距離テレポート 5マス): <span class="rpg-token token-tn">TN</span> 6、コスト 1 マナ。魔法使い <span class="rpg-token token-d10">d10</span> を振って 7 — シールドの後ろに成功したジャンプ。
+**修正なしの修正:**
+
+* **良い状況**: サイコロを1段階上げる（<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>）。
+* **悪い状況**: サイコロを1段階下げる（<span class="rpg-token token-d20">k20</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d4">k4</span>）。
+* **仲間の助け**（彼のアクションを消費する）: サイコロを1段階上げる。
+
+**例:** アデプトがアラームとストレスの中でポータルを閉じようとする（<span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span>）→悪い状況で<span class="rpg-token token-d6">k6</span>に下がる。T = 5。サイコロの結果6: 成功、しかし「アラーム」は物語のプレッシャーとして背景に残る。
 
 
 
 ---
 
-### 5) 堕落と治療
+### 3) 移動と戦闘 - デフォルトはグリッドなし、オプションとしてグリッド
 
-- 0 ハート: 倒れている（動けない）。味方はアクションを使ってあなたを1ハートに回復させることができます。
-- 戦闘後、短い休憩と食事を取ることで、あなたはハートとマナを完全に回復します。
-例: ローグが0に倒れる。戦士が彼を立ち上がらせる — ローグは1ハートに戻ります。
+**デフォルト: マインドシアター（推奨）**
+
+* 距離を次のように説明します: **近い**（手の届く範囲）、**遠くない**（数歩）、**遠い**（舞台の反対側）、**非常に遠い**（スナイパー/車両）。
+* ターンでは: **移動 + 1 アクション**。
+
+  * 移動は通常、距離を1「段階」変更します（遠くない→近いなど）。
+* **攻撃**: **<span class="rpg-token token-stat">S</span>**（近接）または **<span class="rpg-token token-stat">Z</span>**（遠距離）のロールを目標の**防御**に対して行います。
+
+**敵の防御（目安）:**
+
+* **弱い** 4, **通常** 5, **エリート** 6, **ボス** 8（伝説のボス 12）。
+
+**ヒットの効果（迅速な戦闘）:**
+
+* ヒットは **1 ハート** を与えます。
+* 特殊成功は **2 ハート** を与えるか、強力な効果（武装解除、転倒、分散）をもたらします。
+
+**カバーとポジショナルアドバンテージ:**
+
+* 軽いカバー / 不利な角度: 攻撃者のサイコロを1段階下げます。
+* 良い位置 / 不意打ち: サイコロを1段階上げます。
+
+**オプション: グリッドでのプレイ**
+
+* 1マス = 1–2 m。ターン中の移動: **最大5マス**。その他のルールは変更なし。
+
+**例:** スペシャリストがカバーから（<span class="rpg-token token-stat">Z</span> <span class="rpg-token token-d12">d12</span>）エリート（防御6）に向けて射撃します。ターゲットは軽いカバーにいる → <span class="rpg-token token-stat">Z</span>は<span class="rpg-token token-d8">d8</span>に下がります。ロール7: 成功、1ハートのダメージ。
 
 
 
 ---
 
-### 6) キャラクターの成長
+### 4) 力、魔法、特殊なプレイ（汎用）
 
-冒険の後に、次のいずれかを選択してください：
-- 1つの属性をサイコロのサイズで上げる：<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>、
-- または +1 ハート（最大7）、
-- または +1 マナ（最大5）。
-例：戦士が力を<span class="rpg-token token-d10">d10</span>から<span class="rpg-token token-d12">d12</span>に上げる — <span class="rpg-token token-tn">TN</span> 12に当てやすくなる。
+これには魔法、サイコニクス、サイバネティクス、ガジェット、映画のトリックが含まれます - 世界に応じて。
+
+* 標準を**超える**ことをする場合：**パワーポイント**を消費し、**<span class="rpg-token token-stat">M</span>**を振ります。
+* 効果のレベルを決定します：
+
+**力のレベル（T / コスト）：**
+
+* **トリック**（短い効果、トリック、「フラッシュ」）：**T 4 / 0–1 <span class="rpg-token token-power">PM</span>**
+* **標準**（攻撃、シールド、小さなコントロール）：**T 5 / 1 <span class="rpg-token token-power">PM</span>**
+* **強力**（エリア、治療、麻痺、リアルタイムハック）：**T 6 / 2 <span class="rpg-token token-power">PM</span>**
+* **大きな**（シーンの変更、強力な介入）：**T 8–12 / 3 <span class="rpg-token token-power">PM</span>**
+
+**失敗：** <span class="rpg-token token-power">PM</span>は失われ、結果は即座に発生します（オーバーロード、デジタルトレース、儀式のひび、望ましくない注意）。
+
+**回復：** 衝突シーンの後に**1 <span class="rpg-token token-power">PM</span>**を回復し、安全な休息の後に完全に回復します。
+
+**例：** スペースオペラでアデプトがドローンの「センサーを曲げる」ことを試みます：標準、T 5、コスト1 <span class="rpg-token token-power">PM</span>。<span class="rpg-token token-stat">M</span>を振る<span class="rpg-token token-d8">k8</span> = 8：特別な成功 - ドローンは信号を失い、道を誤ります。
 
 
 
 ---
 
-### 7) ダブル・<span class="rpg-token token-d6">d6</span>バリアント
+### 5) 落下、リスク、治療
 
-ダイス<span class="rpg-token token-d6">d6</span>が1つだけの場合：
-- 各特性には成功の閾値があり、ダイスのサイズの代わりになります：
-  - マスター 3+, 熟練者 4+, 初心者 5+, スキルなし 6。
-- 難易度（<span class="rpg-token token-tn">TN</span>）は状況を1段階変化させます（簡単/難しい）。
-- 助け：閾値を1下げる（例：このロールで4+から3+に）。
-- 成長：1つの特性のレベルを上げる（例：熟練者4+ → マスター3+）または+1 ハート/マナ。
-例：軽い防御を持つターゲットに対する盗賊の射撃（熟練者4+）は、難易度が1段階上がるため5+が必要です。<span class="rpg-token token-d6">d6</span>のロール=5 — ヒット。
+* あなたが **0 ハート** に落ちると、あなたは **行動から除外されます**（負傷、気絶、ショック – コンベンションによる）。
+* 同盟者はアクションを消費して、あなたを **1 ハート** に戻すことができます（応急処置、アドレナリン、システムの再起動）。
+* シーンの後、少しの休息があれば：あなたは **完全なハート** に戻ります、条件があれば（避難所、包帯、サービス、食事）。
+* シーンが特に残酷だったり、敵が優位にある場合、GMは「完全なリセット」が安全な停車を必要とすることを要求することがあります。
+
+**例:** ストームが0に落ちる。スペシャリストは彼を遮蔽の後ろに引きずり、アクションを消費する：ストームは1ハートに戻り、次のターンで行動できます。
+
+
+
+---
+
+### 6) キャラクターの成長（テーブルや会計なしのキャンペーン）
+
+冒険の後、**1つ**選んでください：
+
+* **1つの能力を1段階上げる**（最大<span class="rpg-token token-d20">k20</span>まで）、または
+* **+1 ハート**（最大7）、または
+* **+1 力ポイント**（最大5）、または
+* **新しい特技**（GMと合意した短い一文のルール）。
+
+**特技の例（汎用）：**
+
+* **圧力：** シーンごとに、近接攻撃が命中したとき、+1 ハートのダメージを与えます。
+* **影：** 隠れて行動する際、サイコロを1段階上げます。
+* **火花：** シーンごとに1PMを消費することで、ロールなしで「コストを伴う成功」を自動的に得ることができます。
+
+**例：** アデプトは<span class="rpg-token token-stat">M</span>を<span class="rpg-token token-d8">k8</span>から<span class="rpg-token token-d12">k12</span>に上げます – これで彼の力はT 5–6でより安定して発動します。
+
+
+
+---
+
+### 7) バリアント「<span class="rpg-token token-d6">k6</span>のみ」モード**2k6**（迅速かつ非常にプレイしやすい）
+
+
+もしあなたがサイコロのセットを持っていないか、より「物語的」な結果を望む場合：
+
+* 各テストは：**2k6 + 特徴修正値**を振る。
+* **特徴修正値**は開始時に選択：1つの特徴は**+2**、1つは**+1**、1つは**+0**。
+* 結果：
+
+  * **6以下** – 失敗と結果
+  * **7–9** – コストを伴う成功（妥協、資源の喪失、悪化した状況）
+  * **10以上** – 完全な成功
+  * **12** – 特別な成功（追加の利益）
+
+**状況の難易度：**しきい値を変更する代わりに、振りに**+1 / -1**を加える（助ける / 妨げる）か、7–9の場合のコストを設定する。
+
+**特徴-サイコロバージョンへのマッピング（互換性が必要な場合）：**
+
+* <span class="rpg-token token-d6">k6</span> ≈ +0, <span class="rpg-token token-d8">k8</span> ≈ +1, <span class="rpg-token token-d12">k12</span> ≈ +2, <span class="rpg-token token-d20">k20</span> ≈ +3（非常に経験豊富なキャラクター用）。
+
+**例:** 専門家が走りながら射撃：<span class="rpg-token token-stat">Z</span> = +2、困難な状況（-1）。2k6を振る = 8、合計9：コストを伴う成功 – 命中するが、露出した位置に終わる。
 

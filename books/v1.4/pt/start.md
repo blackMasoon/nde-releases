@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-14T12:06:46.413Z"
+generated_at: "2026-01-15T07:57:22.390Z"
 ---
 
 
@@ -49,6 +49,11 @@ generated_at: "2026-01-14T12:06:46.413Z"
     .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
     .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
     .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-luck { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-power { background-color: #e9d5ff; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-heart { background-color: #fecaca; color: #991b1b; border: 1px solid #ef4444; }
+    .token-stat { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-math { background-color: #1e293b; color: #38bdf8; border: 1px solid #0f172a; }
     
     /* Footer Styling */
     .pdf-footer {
@@ -72,7 +77,7 @@ generated_at: "2026-01-14T12:06:46.413Z"
 </style>
 # Regras em resumo
 
-Automatic translation placeholder for pt
+Automatic translation placeholder for <span class="rpg-token token-math">pt</span>
 
 ---
 
@@ -80,118 +85,183 @@ Automatic translation placeholder for pt
 
 ---
 
-### [ERROR] 1) Bohater w 1 minutę
-
-[Translation Failed] * **Koncept:** kim jesteś i w jakim gatunku grasz (1 zdanie).
-* **Rola (wybierz jedną):**
-
-  * **Szturm** – presja, walka, przełamywanie przeszkód
-  * **Specjalista** – skradanie, precyzja, technika, obserwacja
-  * **Adept** – moce, wiedza, wpływ, improwizacja
-* **Cechy (3):**
-
-  * **Siła (S)** – siła fizyczna, wytrzymałość, walka wręcz
-  * **Zręczność (Z)** – refleks, skradanie, strzelanie, pilotowanie
-  * **Moc (M)** – magia/psionika/technologia/blef/intuicja (zależnie od świata)
-* **Kości cech:** jedna cecha **<span class="rpg-token token-d12">k12</span>**, jedna **<span class="rpg-token token-d8">k8</span>**, jedna **<span class="rpg-token token-d6">k6</span>** (wybierz zgodnie z rolą).
-* **Serca:** 5. **Punkty Mocy:** 3 (wydajesz na moce i „zagrania specjalne”).
-Poniżej masz gotowy fragment do wklejenia (wariant A), w stylistyce krótkich zasad „1-page”.
-
-**Łut Szczęścia (jak działa):** wydaj **1 ŁS**, aby wybrać jedno:
-
-* **Przerzut** swojego testu (zostawiasz lepszy wynik), albo
-* **Podbicie kości o 1 stopień** na ten jeden rzut (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), albo
-* **Zamiana porażki na „sukces z kosztem”** — akcja się udaje, ale MG natychmiast dokłada cenę (np. tracisz czas, robisz hałas, zużywasz zasób, kończysz w gorszej pozycji, przyciągasz uwagę, psujesz sprzęt).
-
-**Odzysk ŁS:** na początku kolejnej sesji wracasz do limitu. MG może przyznać **+1 ŁS** za odważne ryzyko, świetną decyzję fabularną lub granie konsekwencjami.
-
-* **Ekwipunek:** 1 narzędzie „kluczowe” (np. miecz, karabin, zestaw hakerski), 1 ochrona (pancerz, tarcza energetyczna, kamuflaż), 3 drobiazgi pasujące do konceptu.
-
-**Przykład:** Specjalista: Z <span class="rpg-token token-d12">k12</span>, M <span class="rpg-token token-d8">k8</span>, S <span class="rpg-token token-d6">k6</span>. W cyberpunku M to „Hacking/Influence”; w fantasy M to „Magia/Wola”.
+### 1) Herói em 1 minuto
 
 
+* **Conceito:** quem você é e em que gênero está jogando (1 frase).
+* **Função (escolha uma):**
 
----
+  * **Assalto** – pressão, combate, superação de obstáculos
+  * **Especialista** – furtividade, precisão, técnica, observação
+  * **Adept** – poderes, conhecimento, influência, improvisação
+* **Atributos (3):**
 
-### 2) Como você executa ações
+  * **Força (F)** – força física, resistência, combate corpo a corpo
+  * **Destreza (D)** – reflexos, furtividade, tiro, pilotagem
+  * **Poder (<span class="rpg-token token-stat">P</span>)** – magia/psionismo/tecnologia/blefe/ intuição (dependendo do mundo)
+* **Dados de atributos:** um atributo **<span class="rpg-token token-d12">k12</span>**, um **<span class="rpg-token token-d8">k8</span>**, um **<span class="rpg-token token-d6">k6</span>** (escolha de acordo com a função).
+* **Corações:** 5. **Pontos de Poder:** 3 (gaste em poderes e "jogadas especiais").
+Abaixo você tem um trecho pronto para colar (variante A), no estilo de regras curtas "1-page".
 
-1. Escolha a característica apropriada (S/Z/M) e role o dado dessa característica.
-2. Compare com o nível de dificuldade (<span class="rpg-token token-tn">TN</span>):
-   - Fácil 4, Normal 6, Difícil 8, Heroico 12.
-3. Resultado:
-   - 1 no dado — falha com complicação (barulho, perda de tempo, ferimento leve, etc.).
-   - Resultado < <span class="rpg-token token-tn">TN</span> — falha.
-   - Resultado ≥ <span class="rpg-token token-tn">TN</span> — sucesso.
-   - Máximo no dado (por exemplo, 10 em <span class="rpg-token token-d10">d10</span>, 20 em <span class="rpg-token token-d20">d20</span>) — sucesso excepcional com benefício adicional.
-Melhorias sem contagem:
-- Situação melhor/pior: diminua/aumente a <span class="rpg-token token-tn">TN</span> em 1 grau (por exemplo, 6 → 8 por cobertura).
-- Ajuda de um aliado (com sua ação): para este lançamento, "aumente" o dado em um tamanho (<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>).
-Exemplo: O Guerreiro arromba a porta (Normal 6). Ele rola <span class="rpg-token token-d10">d10</span> e tira 10 — sucesso excepcional: a porta voa, e o guarda atrás dela cai.
+**Dado da Sorte (como funciona):** gaste **1 DS**, para escolher uma:
+
+* **Repetição** do seu teste (deixe o melhor resultado), ou
+* **Aumento do dado em 1 nível** para essa única jogada (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), ou
+* **Troca de falha por "sucesso com custo"** — a ação é bem-sucedida, mas o MJ imediatamente impõe um custo (por exemplo, você perde tempo, faz barulho, consome um recurso, termina em uma posição pior, atrai atenção, danifica equipamento).
+
+**Recuperação de DS:** no início da próxima sessão, você volta ao limite. O MJ pode conceder **+1 DS** por risco ousado, excelente decisão narrativa ou jogando com consequências.
+
+* **Equipamento:** 1 ferramenta "chave" (por exemplo, espada, rifle, kit de hacker), 1 proteção (armadura, escudo energético, camuflagem), 3 trinkets que se encaixam no conceito.
+
+**Exemplo:** Especialista: F <span class="rpg-token token-d12">k12</span>, <span class="rpg-token token-stat">P</span> <span class="rpg-token token-d8">k8</span>, D <span class="rpg-token token-d6">k6</span>. No cyberpunk, <span class="rpg-token token-stat">P</span> é "Hackeamento/Influência"; na fantasia, <span class="rpg-token token-stat">P</span> é "Magia/Vontade".
 
 
 
 ---
 
-### 3) Movimento e luta no tabuleiro
-
-- Movimento: até 5 quadrados (diagonais permitidas).
-- Sua vez: Movimento + 1 Ação (por exemplo, ataque, feitiço, busca, levantar alavanca).
-- Ataque:
-  - Corpo a corpo (C): rolagem contra a <span class="rpg-token token-tn">TN</span> do oponente.
-  - Distância (D): a cobertura do alvo aumenta a <span class="rpg-token token-tn">TN</span> em 1 grau.
-- <span class="rpg-token token-tn">TN</span> dos oponentes: Peão 6, Elite 8, Chefe 12.
-- Efeitos do acerto: Peão — cai após ser atingido; Elite — o GM pode exigir condições favoráveis; Chefe — tem 3 Feridas (acerto = 1 Ferida). Sucesso excepcional contra o Chefe = 2 Feridas.
-- Retaliação: se você errar em combate corpo a corpo ou em alcance de retaliação, perde 1 Coração (a menos que tenha cobertura total).
-Exemplo: Mago (D <span class="rpg-token token-d6">d6</span>) atira com uma funda em um peão atrás de uma caixa: <span class="rpg-token token-tn">TN</span> 6 + cobertura → 8. O Mago pede ajuda ao Ladino (aumenta o dado para <span class="rpg-token token-d8">d8</span>) e muda de posição para uma melhor (<span class="rpg-token token-tn">TN</span> cai para 6). <span class="rpg-token token-d8">d8</span>=7 — atingido.
+### 2) Como resolver ações
 
 
+1. O jogador diz **o que faz** e **como** (descrição no mundo do jogo).
+2. O mestre determina a **Dificuldade** e a aposta ("o que acontece em caso de falha").
+3. Role o dado de atributo (F/D/<span class="rpg-token token-stat">S</span>) e compare com a Dificuldade.
 
----
+**Dificuldade (D):**
 
-### 4) Magia
+* **3** fácil, **4** padrão, **5** difícil, **6** muito difícil, **8** heroico, **12** lendário.
 
-- Lançar um feitiço: descreva o efeito, gaste Mana, lance Magia (M).
-  - Truque (chama, estrondo, névoa) — <span class="rpg-token token-tn">TN</span> 4, custo 0–1 Mana.
-  - Projétil/Barreira/Salto de 5 quadrados — <span class="rpg-token token-tn">TN</span> 6, custo 1 Mana.
-  - Área/Cura +2 Corações/Paralisia — <span class="rpg-token token-tn">TN</span> 8, custo 2 Mana.
-  - Grande poder (ponte de gelo, tempestade de fogo) — <span class="rpg-token token-tn">TN</span> 12, custo 3 Mana.
-- Falha: Mana é perdida; ocorre uma pequena consequência (falta de ar -1 Coração ou atenção indesejada dos inimigos).
-- Descanso após a batalha: você recupera toda a Mana; um descanso seguro também restaura Corações.
-Exemplo: “Relâmpago” (teleporte curto de 5 quadrados): <span class="rpg-token token-tn">TN</span> 6, custo 1 Mana. O mago <span class="rpg-token token-d10">d10</span> rola 7 — salto bem-sucedido para a barreira.
+**Resultado do lançamento:**
 
+* **1** – falha com consequência (a complicação acontece com certeza).
+* **< D** – falha (mas a cena continua: perda de tempo, barulho, pior posição, perda de recurso).
+* **≥ D** – sucesso.
+* **<span class="rpg-token token-stat">M</span>áximo no dado** (por exemplo, 12 em <span class="rpg-token token-d12">k12</span>, 20 em <span class="rpg-token token-d20">k20</span>) – sucesso excepcional: você ganha um benefício adicional.
 
+**Modificadores sem contagem:**
 
----
+* **Melhor situação**: aumente o dado em 1 nível (<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>).
+* **Pior situação**: diminua o dado em 1 nível (<span class="rpg-token token-d20">k20</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d4">k4</span>).
+* **Ajuda de um aliado** (custa a ação dele): aumente o dado em 1 nível.
 
-### 5) Queda e tratamento
-
-- 0 Coração: derrubado (não está funcionando). Um aliado pode usar uma ação para te levantar para 1 Coração.
-- Após o combate, com um breve descanso e uma refeição, vocês retornam à plenitude de Corações e Mana.
-Exemplo: O Ladino cai para 0. O Guerreiro o ajuda a se levantar — o Ladino volta para 1 Coração.
+**Exemplo:** O Adepto tenta fechar o portal (D <span class="rpg-token token-d8">k8</span>) sob alarme e estresse → pior situação, cai para <span class="rpg-token token-d6">k6</span>. D = 5. Lançamento 6: sucesso, mas o "alarme" permanece ao fundo como pressão narrativa.
 
 
 
 ---
 
-### 6) Desenvolvimento de PERSONAGENS
+### 3) Movimento e combate – por padrão sem grade, grade como opção
 
-Após a aventura, escolha uma:
-- Aumente um atributo em um tamanho de dado: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
-- ou +1 Coração (máx 7),
-- ou +1 Mana (máx 5).
-Exemplo: O Guerreiro aumenta a Força de <span class="rpg-token token-d10">d10</span> para <span class="rpg-token token-d12">d12</span> — fica mais fácil atingir <span class="rpg-token token-tn">TN</span> 12.
+**Por padrão: teatro da mente (recomendado)**
+
+* Distâncias são descritas como: **Próximo** (ao alcance), **Não muito longe** (alguns passos), **Longe** (do outro lado do palco), **Muito longe** (sniper/veículo).
+* Em uma rodada você tem: **Movimento + 1 Ação**.
+
+  * Movimento geralmente altera a distância em 1 “grau” (Não muito longe→Próximo etc.).
+* **Ataque**: rolagem **<span class="rpg-token token-stat">S</span>** (corpo a corpo) ou **D** (distância) contra **Defesa** do alvo.
+
+**Defesa dos oponentes (aproximadamente):**
+
+* **Fraco** 4, **Típico** 5, **Elite** 6, **Chefe** 8 (chefe lendário 12).
+
+**Efeitos de acerto (combate rápido):**
+
+* Um acerto causa **1 Coração**.
+* Um sucesso excepcional causa **2 Corações** ou dá um efeito forte (desarme, derrubada, distração).
+
+**Cobertura e vantagem posicional:**
+
+* Cobertura leve / ângulo ruim: diminua o dado do atacante em 1 grau.
+* Boa posição / surpresa: aumente o dado em 1 grau.
+
+**Opção: jogo em grade**
+
+* 1 quadrado = 1–2 m. Movimento na rodada: **até 5 quadrados**. O resto das regras permanece inalterado.
+
+**Exemplo:** O especialista atira de uma cobertura (D <span class="rpg-token token-d12">d12</span>) para a elite (Defesa 6). O alvo está em cobertura leve → D cai para <span class="rpg-token token-d8">d8</span>. Rolagem 7: sucesso, 1 Coração de dano.
 
 
 
 ---
 
-### 7) Wariant só-<span class="rpg-token token-d6">d6</span>
+### 4) Poderes, „feitiços” e jogadas especiais (universais)
 
-Quando você tem apenas um dado <span class="rpg-token token-d6">d6</span>:
-- Em vez de tamanhos de dados, cada atributo tem um limiar de sucesso:
-  - Mestre 3+, Treinado 4+, Novato 5+, Sem proficiência 6.
-- A <span class="rpg-token token-tn">TN</span> ainda muda a situação em 1 grau (mais fácil/difícil).
-- Ajuda: reduza o limiar em 1 (por exemplo, de 4+ para 3+ para este teste).
-- Desenvolvimento: aumente o nível de um atributo (por exemplo, Treinado 4+ → Mestre 3+) ou +1 Coração/Mana.
-Exemplo: Tiro do Ladrão (Treinado 4+) em um alvo com leve cobertura (um grau mais difícil) requer 5+. Rolagem <span class="rpg-token token-d6">d6</span>=5 — acerto.
+
+Isso abrange magia, psionismo, cibernética, gadgets, truques de filme – dependendo do mundo.
+
+* Quando você faz algo **acima do padrão**: gaste **Ponto de Poder** e role **<span class="rpg-token token-stat">M</span>**.
+* Determine o nível do efeito:
+
+**Níveis de poder (T / custo):**
+
+* **Truque** (efeito curto, truque, "flash"): **T 4 / 0–1 PP**
+* **Padrão** (ataque, escudo, impulso, controle menor): **T 5 / 1 PP**
+* **Forte** (área, cura, paralisia, hack "ao vivo"): **T 6 / 2 PP**
+* **Grande** (mudança de cena, intervenção poderosa): **T 8–12 / 3 PP**
+
+**Falha:** PP é perdido, e a consequência é imediata (sobrecarga, rastro digital, falha no ritual, atenção indesejada).
+
+**Recuperação:** após a cena de conflito, você recupera **1 PP**, após um descanso seguro – até o máximo.
+
+**Exemplo:** Em uma space opera, o Adepto tenta "dobrar o sensor" de um drone: Padrão, T 5, custo 1 PP. Rolagem <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span> = 8: sucesso excepcional – o drone perde o sinal e se confunde na trilha.
+
+
+
+---
+
+### 5) Queda, risco e cura
+
+* Quando você cai para **0 Corações**, você está **fora de ação** (ferido, atordoado, em choque – de acordo com a convenção).
+* Um aliado pode gastar uma ação para te colocar em **1 Coração** (primeiros socorros, adrenalina, reinicialização do sistema).
+* Após a cena, se vocês tiverem um momento de descanso: vocês voltam para **Corações Cheios**, desde que tenham as condições (abrigo, curativo, manutenção, refeição).
+* Se a cena foi excepcionalmente brutal ou se os inimigos têm vantagem, o Narrador pode exigir que um “reset completo” necessite de uma parada segura.
+
+**Exemplo:** O Szturm cai para 0. O especialista o puxa para trás da cobertura e gasta uma ação: o Szturm volta para 1 Coração e pode agir na próxima rodada.
+
+
+
+---
+
+### 6) Desenvolvimento de personagem (campanha sem tabelas e contabilidade)
+
+
+Após a aventura, escolha **uma**:
+
+* **Aumente** um atributo em 1 ponto (máx. até <span class="rpg-token token-d20">k20</span>), ou
+* **+1 Coração** (máx. 7), ou
+* **+1 Ponto de Poder** (máx. 5), ou
+* **Novo Traço** (uma regra curta, em uma frase, acordada com o Mestre).
+
+**Exemplos de traços (universais):**
+
+* **Ênfase:** uma vez por cena, quando você acerta corpo a corpo, causa +1 Coração de dano.
+* **Sombra:** quando você age de forma furtiva, tem um aumento de dado de 1 ponto.
+* **Faísca:** uma vez por cena, você pode gastar 1 PP para obter automaticamente um “sucesso com custo” sem rolar.
+
+**Exemplo:** O Adepto aumenta <span class="rpg-token token-stat">M</span> de <span class="rpg-token token-d8">k8</span> para <span class="rpg-token token-d12">k12</span> – agora seus poderes se manifestam de forma mais estável em T 5–6.
+
+
+
+---
+
+### 7) Variante "somente <span class="rpg-token token-d6">k6</span>" no modo **2k6** (rápido e muito jogável)
+
+
+Se você não tem um conjunto de dados ou deseja graus de resultado mais "narrativos":
+
+* Cada teste é: **role 2k6 + modificador de atributo**.
+* **Modificadores de atributos** escolha no início: um atributo **+2**, um **+1**, um **+0**.
+* Resultado:
+
+  * **6 ou menos** – falha com consequência
+  * **7–9** – sucesso com custo (compromisso, perda de recurso, posição pior)
+  * **10+** – sucesso total
+  * **12** – sucesso excepcional (benefício adicional)
+
+**Dificuldade da situação:** em vez de mudar os limites, adicione **+1 / -1** ao rolamento (ajuda / atrapalha) ou custo em caso de 7–9.
+
+**Mapeamento para a versão de dados-atributos (se você quiser conformidade):**
+
+* <span class="rpg-token token-d6">k6</span> ≈ +0, <span class="rpg-token token-d8">k8</span> ≈ +1, <span class="rpg-token token-d12">k12</span> ≈ +2, <span class="rpg-token token-d20">k20</span> ≈ +3 (para personagens muito experientes).
+
+**Exemplo:** Especialista atira em movimento: <span class="rpg-token token-stat">Z</span> = +2, situação difícil (-1). Rolamento 2k6 = 8, soma 9: sucesso com custo – acerta, mas termina em uma posição exposta.
 

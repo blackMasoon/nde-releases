@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-14T12:06:46.372Z"
+generated_at: "2026-01-15T07:57:22.444Z"
 ---
 
 
@@ -49,6 +49,11 @@ generated_at: "2026-01-14T12:06:46.372Z"
     .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
     .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
     .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-luck { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-power { background-color: #e9d5ff; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-heart { background-color: #fecaca; color: #991b1b; border: 1px solid #ef4444; }
+    .token-stat { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-math { background-color: #1e293b; color: #38bdf8; border: 1px solid #0f172a; }
     
     /* Footer Styling */
     .pdf-footer {
@@ -80,118 +85,183 @@ Automatic translation placeholder for de
 
 ---
 
-### [ERROR] 1) Bohater w 1 minutę
-
-[Translation Failed] * **Koncept:** kim jesteś i w jakim gatunku grasz (1 zdanie).
-* **Rola (wybierz jedną):**
-
-  * **Szturm** – presja, walka, przełamywanie przeszkód
-  * **Specjalista** – skradanie, precyzja, technika, obserwacja
-  * **Adept** – moce, wiedza, wpływ, improwizacja
-* **Cechy (3):**
-
-  * **Siła (S)** – siła fizyczna, wytrzymałość, walka wręcz
-  * **Zręczność (Z)** – refleks, skradanie, strzelanie, pilotowanie
-  * **Moc (M)** – magia/psionika/technologia/blef/intuicja (zależnie od świata)
-* **Kości cech:** jedna cecha **<span class="rpg-token token-d12">k12</span>**, jedna **<span class="rpg-token token-d8">k8</span>**, jedna **<span class="rpg-token token-d6">k6</span>** (wybierz zgodnie z rolą).
-* **Serca:** 5. **Punkty Mocy:** 3 (wydajesz na moce i „zagrania specjalne”).
-Poniżej masz gotowy fragment do wklejenia (wariant A), w stylistyce krótkich zasad „1-page”.
-
-**Łut Szczęścia (jak działa):** wydaj **1 ŁS**, aby wybrać jedno:
-
-* **Przerzut** swojego testu (zostawiasz lepszy wynik), albo
-* **Podbicie kości o 1 stopień** na ten jeden rzut (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), albo
-* **Zamiana porażki na „sukces z kosztem”** — akcja się udaje, ale MG natychmiast dokłada cenę (np. tracisz czas, robisz hałas, zużywasz zasób, kończysz w gorszej pozycji, przyciągasz uwagę, psujesz sprzęt).
-
-**Odzysk ŁS:** na początku kolejnej sesji wracasz do limitu. MG może przyznać **+1 ŁS** za odważne ryzyko, świetną decyzję fabularną lub granie konsekwencjami.
-
-* **Ekwipunek:** 1 narzędzie „kluczowe” (np. miecz, karabin, zestaw hakerski), 1 ochrona (pancerz, tarcza energetyczna, kamuflaż), 3 drobiazgi pasujące do konceptu.
-
-**Przykład:** Specjalista: Z <span class="rpg-token token-d12">k12</span>, M <span class="rpg-token token-d8">k8</span>, S <span class="rpg-token token-d6">k6</span>. W cyberpunku M to „Hacking/Influence”; w fantasy M to „Magia/Wola”.
+### 1) Held in 1 Minute
 
 
+* **Konzept:** wer bist du und in welchem Genre spielst du (1 Satz).
+* **Rolle (wähle eine):**
 
----
+  * **Sturm** – Druck, Kampf, Überwinden von Hindernissen
+  * **Spezialist** – Schleichen, Präzision, Technik, Beobachtung
+  * **Adept** – Kräfte, Wissen, Einfluss, Improvisation
+* **Eigenschaften (3):**
 
-### 2) Wie führst du Aktionen aus
+  * **<span class="rpg-token token-math">St</span>ärke (<span class="rpg-token token-stat">S</span>)** – körperliche <span class="rpg-token token-math">St</span>ärke, Ausdauer, Nahkampf
+  * **Geschicklichkeit (G)** – Reflexe, Schleichen, Schießen, Steuern
+  * **Macht (<span class="rpg-token token-stat">M</span>)** – Magie/Psionik/Technologie/Bluff/Intuition (je nach Welt)
+* **Würfel für Eigenschaften:** ein Würfel **<span class="rpg-token token-d12">k12</span>**, ein **<span class="rpg-token token-d8">k8</span>**, ein **<span class="rpg-token token-d6">k6</span>** (wähle entsprechend der Rolle).
+* **Herzen:** 5. **Machtpunkte:** 3 (verwendest du für Kräfte und „besondere Aktionen“).
+Unten hast du einen fertigen Abschnitt zum Einfügen (Variante A), im Stil der kurzen Regeln „1-Seite“.
 
-1. Wähle die passende Eigenschaft (S/Z/M) und würfle mit dem Würfel dieser Eigenschaft.
-2. Vergleiche mit dem Schwierigkeitsgrad (<span class="rpg-token token-tn">TN</span>):
-   - Einfach 4, Normal 6, Schwer 8, Heldisch 12.
-3. Ergebnis:
-   - 1 auf dem Würfel — Misserfolg mit Komplikation (Lärm, Zeitverlust, kleine Verletzung usw.).
-   - Ergebnis < <span class="rpg-token token-tn">TN</span> — Misserfolg.
-   - Ergebnis ≥ <span class="rpg-token token-tn">TN</span> — Erfolg.
-   - Maximal auf dem Würfel (z.B. 10 auf <span class="rpg-token token-d10">d10</span>, 20 auf <span class="rpg-token token-d20">d20</span>) — außergewöhnlicher Erfolg mit zusätzlichem Vorteil.
-Verbesserungen ohne Zählung:
-- Bessere/ schlechtere Situation: senke/ erhöhe <span class="rpg-token token-tn">TN</span> um 1 Stufe (z.B. 6 → 8 durch Deckung).
-- Hilfe eines Verbündeten (mit seiner Aktion): für diesen Wurf „steigere“ den Würfel um eine Größe (<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>).
-Beispiel: Der Krieger rammt die Tür auf (Normal 6). Er würfelt <span class="rpg-token token-d10">d10</span> und erzielt 10 — außergewöhnlicher Erfolg: die Tür fliegt auf, und der Wache dahinter fällt um.
+**Wurf des Glücks (wie es funktioniert):** gib **1 WdG** aus, um eines auszuwählen:
+
+* **Wiederwurf** deines Tests (du behältst das bessere Ergebnis), oder
+* **Wurf um 1 Stufe erhöhen** für diesen einen Wurf (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), oder
+* **Umwandlung eines Misserfolgs in „Erfolg mit Kosten“** – die Aktion gelingt, aber der SL fügt sofort einen Preis hinzu (z.B. du verlierst Zeit, machst Lärm, verbrauchst eine Ressource, endest in einer schlechteren Position, ziehst Aufmerksamkeit auf dich, beschädigst Ausrüstung).
+
+**Wiederherstellung von WdG:** zu Beginn der nächsten Sitzung kehrst du zum Limit zurück. Der SL kann **+1 WdG** für mutiges Risiko, großartige erzählerische Entscheidungen oder das Spielen von Konsequenzen gewähren.
+
+* **Ausrüstung:** 1 „Schlüssel“-Werkzeug (z.B. Schwert, Gewehr, Hacker-Set), 1 Schutz (Rüstung, Energieschild, Tarnung), 3 Kleinigkeiten, die zum Konzept passen.
+
+**Beispiel:** Spezialist: <span class="rpg-token token-stat">S</span> <span class="rpg-token token-d12">k12</span>, <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span>, G <span class="rpg-token token-d6">k6</span>. In Cyberpunk ist <span class="rpg-token token-stat">M</span> „Hacking/Einfluss“; in Fantasy ist <span class="rpg-token token-stat">M</span> „Magie/Wille“.
 
 
 
 ---
 
-### 3) Bewegung und Kampf auf dem Spielfeld
-
-- Bewegung: bis zu 5 Felder (Diagonalen erlaubt).
-- Dein Zug: Bewegung + 1 Aktion (z. B. Angriff, Zauber, Durchsuchen, Hebel ziehen).
-- Angriff:
-  - Nahkampf (N): Wurf gegen die <span class="rpg-token token-tn">TN</span> des Gegners.
-  - Fernkampf (F): Deckung des Ziels erhöht die <span class="rpg-token token-tn">TN</span> um 1 Stufe.
-- <span class="rpg-token token-tn">TN</span> der Gegner: Fußsoldat 6, Elite 8, Boss 12.
-- Auswirkungen eines Treffers: Fußsoldat — fällt nach einem Treffer; Elite — der SL kann günstige Bedingungen verlangen; Boss — hat 3 Wunden (Treffer = 1 Wunde). Außergewöhnlicher Erfolg gegen den Boss = 2 Wunden.
-- Vergeltung: Wenn du im Nahkampf oder im Bereich der Vergeltung verfehlst, verlierst du 1 Herz (es sei denn, du hast vollen Schutz).
-Beispiel: Magier (F <span class="rpg-token token-d6">d6</span>) schießt mit einer Schleuder auf den Fußsoldaten hinter der Kiste: <span class="rpg-token token-tn">TN</span> 6 + Deckung → 8. Der Magier bittet den Schurken um Hilfe (er erhöht den Würfel auf <span class="rpg-token token-d8">d8</span>) und wechselt die Position auf eine bessere (<span class="rpg-token token-tn">TN</span> sinkt auf 6). <span class="rpg-token token-d8">d8</span>=7 — getroffen.
+### 2) Wie man Aktionen auflö<span class="rpg-token token-math">st</span>
 
 
+1. Der Spieler sagt **was er tut** und **wie** (Beschreibung in der Spielwelt).
+2. Der Spielleiter legt die **Schwierigkeit** und den Einsatz fest („was bei einem Misserfolg passiert“).
+3. Würfle mit dem Attributswurf (<span class="rpg-token token-stat">S</span>/W/G) und vergleiche mit der Schwierigkeit.
 
----
+**Schwierigkeit (<span class="rpg-token token-stat">S</span>):**
 
-### 4) Magie
+* **3** leicht, **4** standard, **5** schwierig, **6** sehr schwierig, **8** heroisch, **12** legendär.
 
-- Zauber wirken: Beschreibe den Effekt, gib Mana aus, wirf Magie (M).
-  - Trick (Flamme, Knall, Nebel) — SW 4, Kosten 0–1 Mana.
-  - Geschoss/Schutz/Sprung 5 Felder — SW 6, Kosten 1 Mana.
-  - Bereich/Heilung +2 Herzen/Paralyse — SW 8, Kosten 2 Mana.
-  - Große Macht (Eisbrücke, Feuersturm) — SW 12, Kosten 3 Mana.
-- Misserfolg: Mana geht verloren; es kommt zu einer kleinen Konsequenz (Kurzatmigkeit −1 Herz oder unerwünschte Aufmerksamkeit von Feinden).
-- Ruhe nach dem Kampf: Du stellst alle Mana wieder her; ein sicherer Rast stellt auch Herzen wieder her.
-Beispiel: „Blitz“ (kurze Teleportation 5 Felder): SW 6, Kosten 1 Mana. Magier <span class="rpg-token token-d10">d10</span> würfelt 7 — erfolgreicher Sprung hinter den Schutz.
+**Wurf-Ergebnis:**
 
+* **1** – Misserfolg mit Konsequenz (eine Komplikation tritt definitiv ein).
+* **< <span class="rpg-token token-stat">S</span>** – Misserfolg (aber die Szene geht weiter: Zeitverlust, Lärm, schlechtere Position, Verlust einer Ressource).
+* **≥ <span class="rpg-token token-stat">S</span>** – Erfolg.
+* **Maximal auf dem Würfel** (z.B. 12 auf <span class="rpg-token token-d12">k12</span>, 20 auf <span class="rpg-token token-d20">k20</span>) – außergewöhnlicher Erfolg: du erhältst einen zusätzlichen Vorteil.
 
+**Modifikatoren ohne <span class="rpg-token token-stat">Z</span>ählen:**
 
----
+* **Bessere Situation**: erhöhe den Würfel um 1 Stufe (<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>).
+* **Schlechtere Situation**: senke den Würfel um 1 Stufe (<span class="rpg-token token-d20">k20</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d4">k4</span>).
+* **Hilfe eines Verbündeten** (kostet dessen Aktion): erhöhe den Würfel um 1 Stufe.
 
-### 5) Fall und Behandlung
-
-- 0 Herzen: umgekippt (du bist handlungsunfähig). Ein Verbündeter kann eine Aktion verwenden, um dich auf 1 Herz zu heben.
-- Nach dem Kampf, bei einer kurzen Pause und einer Mahlzeit, kehrt ihr zu vollen Herzen und Mana zurück.  
-Beispiel: Der Schurke fällt auf 0. Der Krieger hilft ihm aufzustehen — der Schurke kehrt auf 1 Herz zurück.
+**Beispiel:** Der Adept versucht, ein Portal zu schließen (<span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span>) bei Alarm und Stress → schlechtere Situation, fällt auf <span class="rpg-token token-d6">k6</span>. <span class="rpg-token token-stat">S</span> = 5. Wurf 6: Erfolg, aber der „Alarm“ bleibt im Hintergrund als erzählerischer Druck.
 
 
 
 ---
 
-### 6) Entwicklung der CHARAKTERE
+### 3) Bewegung und Kampf – standardmäßig ohne Raster, Raster als Option
 
-Nach dem Abenteuer wähle eines:
-- Erhöhe einen Attribut um die Größe des Würfels: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
-- oder +1 Herz (max 7),
-- oder +1 Mana (max 5).
-Beispiel: Der Krieger erhöht seine Stärke von <span class="rpg-token token-d10">d10</span> auf <span class="rpg-token token-d12">d12</span> — es ist einfacher, <span class="rpg-token token-tn">TN</span> 12 zu treffen.
+**Standardmäßig: Theater des Geistes (empfohlen)**
+
+* Entfernungen beschreiben als: **Nah** (in Reichweite), **Nicht weit** (einige Schritte), **Weit** (auf der anderen Seite der Bühne), **Sehr weit** (sniper/fahrzeugmäßig).
+* In einer Runde hast du: **Bewegung + 1 Aktion**.
+
+  * Bewegung verändert normalerweise die Entfernung um 1 „Grad“ (Nicht weit→Nah usw.).
+* **Angriff**: Wurf **<span class="rpg-token token-stat">S</span>** (Nahkampf) oder **<span class="rpg-token token-stat">Z</span>** (Fernkampf) gegen die **Verteidigung** des Ziels.
+
+**Verteidigung der Gegner (ungefähr):**
+
+* **Schwach** 4, **Typisch** 5, **Elite** 6, **Boss** 8 (legendärer Boss 12).
+
+**Folgen eines Treffers (schneller Kampf):**
+
+* Ein Treffer verursacht **1 Herz**.
+* Ein außergewöhnlicher Erfolg verursacht **2 Herzen** oder hat einen starken Effekt (Entwaffnen, Umwerfen, Ablenken).
+
+**Deckung und Positionsvorteil:**
+
+* Leichte Deckung / schlechterer Winkel: senke den Würfel des Angreifers um 1 Grad.
+* Gute Position / Überraschung: erhöhe den Würfel um 1 Grad.
+
+**Option: Spiel auf Raster**
+
+* 1 Feld = 1–2 m. Bewegung in einer Runde: **bis zu 5 Felder**. Der Rest der Regeln bleibt unverändert.
+
+**Beispiel:** Ein Spezialist schießt aus Deckung (<span class="rpg-token token-stat">Z</span> w12) auf eine Elite (Verteidigung 6). Das Ziel ist in leichter Deckung → <span class="rpg-token token-stat">Z</span> sinkt auf w8. Wurf 7: Erfolg, 1 Herz Schaden.
 
 
 
 ---
 
-### 7) Variante nur-<span class="rpg-token token-d6">d6</span>
+### 4) <span class="rpg-token token-stat">M</span>ächte, „Zauber“ und spezielle Aktionen (universell)
 
-Wenn ihr nur einen <span class="rpg-token token-d6">d6</span>-Wurf habt:
-- Anstelle von Würfelgrößen hat jede Eigenschaft eine Erfolgsgrenze:
-  - Meister 3+, Geübt 4+, Anfänger 5+, Ohne Fertigkeit 6.
-- Die <span class="rpg-token token-tn">TN</span> verändert weiterhin die Situation um 1 Grad (leichter/schwerer).
-- Hilfe: Senke die Grenze um 1 (z.B. von 4+ auf 3+ für diesen Wurf).
-- Entwicklung: Erhöhe das Niveau einer Eigenschaft (z.B. Geübt 4+ → Meister 3+) oder +1 Herz/Mana.
-Beispiel: Schuss des Schurken (Geübt 4+) auf ein Ziel in leichter Deckung (um einen Grad schwieriger) erfordert 5+. Wurf <span class="rpg-token token-d6">d6</span>=5 — Treffer.
+
+    Dies umfasst Magie, Psionik, Cybernetik, Gadgets, Filmtricks – je nach Welt.
+
+* Wenn du etwas **über das Standardmaß** machst: gib **1 Machtpunkt** aus und würfle **<span class="rpg-token token-stat">M</span>**.
+* Bestimme die Effektstärke:
+
+**<span class="rpg-token token-stat">M</span>ächtebenen (T / Kosten):**
+
+* **Trick** (kurzer Effekt, Trick, „Flash“): **T 4 / 0–1 MP**
+* **Standard** (Angriff, Schild, Impuls, feine Kontrolle): **T 5 / 1 MP**
+* **Stark** (Bereich, Heilung, Lähmung, Live-Hack): **T 6 / 2 MP**
+* **Groß** (Szene ändern, mächtiger Eingriff): **T 8–12 / 3 MP**
+
+**Misserfolg:** MP gehen verloren, und die Konsequenz ist sofort (Überlastung, digitaler Fußabdruck, Riss im Ritual, unerwünschte Aufmerksamkeit).
+
+**Wiederherstellung:** Nach der Konfliktszene erhältst du **1 MP** zurück, nach einer sicheren Ruhepause – bis zur vollen Menge.
+
+**Beispiel:** In einer Weltraumoper versucht ein Adept, den „Sensor“ eines Drohnen zu „verbiegen“: Standard, T 5, Kosten 1 MP. Wurf <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span> = 8: außergewöhnlicher Erfolg – die Drohne verliert das Signal und verwirrt die Spur.
+
+
+
+---
+
+### 5) Sturz, Risiko und Heilung
+
+* Wenn du auf **0 Herzen** fällst, bist du **aus dem Spiel genommen** (verwundet, betäubt, im Schock – gemäß der Konvention).
+* Ein Verbündeter kann eine Aktion verwenden, um dich auf **1 Herz** zu bringen (Erste Hilfe, Adrenalin, Systemneustart).
+* Nach der Szene, wenn ihr einen Moment der Ruhe habt: Ihr kehrt zu **vollen Herzen** zurück, sofern die Bedingungen stimmen (Unterkunft, Verband, Wartung, Mahlzeit).
+* Wenn die Szene besonders brutal war oder die Feinde im Vorteil sind, kann der Spielleiter verlangen, dass ein „voller Reset“ einen sicheren Halt erfordert.
+
+**Beispiel:** Sturm fällt auf 0. Der Spezialist zieht ihn hinter Deckung und verwendet eine Aktion: Sturm kehrt auf 1 Herz zurück und kann in der nächsten Runde handeln.
+
+
+
+---
+
+### 6) Charakterentwicklung (Kampagne ohne Tabellen und Buchhaltung)
+
+
+Po przygodzie wybierz **jedno**:
+
+* **Verbessere** eine Eigenschaft um 1 Punkt (max. bis <span class="rpg-token token-d20">k20</span>), oder
+* **+1 Herz** (max. 7), oder
+* **+1 Kraftpunkt** (max. 5), oder
+* **Neuer Vorteil** (kurze, einzeilige Regel, die mit dem Spielleiter abgestimmt ist).
+
+**Beispiele für Vorteile (universell):**
+
+* **Druck:** einmal pro Szene, wenn du im Nahkampf triffst, fügst du +1 Herz Schaden hinzu.
+* **Schatten:** wenn du heimlich handelst, hast du einen Würfelbonus von 1 Punkt.
+* **Funke:** einmal pro Szene kannst du 1 <span class="rpg-token token-math">KP</span> ausgeben, um automatisch „Erfolg mit Kosten“ ohne Würfelwurf zu erzielen.
+
+**Beispiel:** Der Adept verbessert <span class="rpg-token token-stat">M</span> von <span class="rpg-token token-d8">k8</span> auf <span class="rpg-token token-d12">k12</span> – jetzt treten seine Kräfte stabiler bei T 5–6 auf.
+
+
+
+---
+
+### 7) Variante „nur <span class="rpg-token token-d6">k6</span>” im **2k6** Modus (schnell und sehr spielbar)
+
+
+Falls ihr kein Würfelsatz habt oder eine „narrativere” Ergebnisstufen wünscht:
+
+* Jeder Test ist: **würfle 2k6 + Attributmodifikator**.
+* **Attributmodifikatoren** wählt zu Beginn: ein Attribut **+2**, eines **+1**, eines **+0**.
+* Ergebnis:
+
+  * **6 oder weniger** – Misserfolg mit Konsequenz
+  * **7–9** – Erfolg mit Kosten (Kompromiss, Verlust eines Ressourcen, schlechtere Position)
+  * **10+** – voller Erfolg
+  * **12** – außergewöhnlicher Erfolg (zusätzlicher Vorteil)
+
+**Schwierigkeitsgrad der Situation:** anstatt die Schwellenwerte zu ändern, gib **+1 / -1** zum Wurf (unterstützt / hindert) oder Kosten im Falle von 7–9.
+
+**Mapping zur Würfel-Attribut-Version (wenn du Konsistenz möchtest):**
+
+* <span class="rpg-token token-d6">k6</span> ≈ +0, <span class="rpg-token token-d8">k8</span> ≈ +1, <span class="rpg-token token-d12">k12</span> ≈ +2, <span class="rpg-token token-d20">k20</span> ≈ +3 (für sehr erfahrene Charaktere).
+
+**Beispiel:** Spezialist schießt im Lauf: <span class="rpg-token token-stat">Z</span> = +2, schwierige Situation (-1). Wurf 2k6 = 8, Summe 9: Erfolg mit Kosten – trifft, endet aber in einer offenen Position.
 
