@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDE — Ściąga zasad 9-up (A4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: #fff;
+    color: #1c1917;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* One printable page */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Poker card */
+  .card {
+    width: 63mm;
+    height: 88mm;
+    box-sizing: border-box;
+    border: 1px solid #e7e5e4;
+    border-radius: 3mm;
+    background: #ffffff;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  /* Fixed 3x3 positions (A4) */
+  :root{
+    --mx: 5.5mm;   /* left/right margin */
+    --my: 11.5mm;  /* top/bottom margin */
+    --gx: 5mm;     /* horizontal gap */
+    --gy: 5mm;     /* vertical gap */
+    --cw: 63mm;    /* card width */
+    --ch: 88mm;    /* card height */
+  }
+
+  .r1c1 { left: var(--mx); top: var(--my); }
+  .r1c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: var(--my); }
+  .r1c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: var(--my); }
+
+  .r2c1 { left: var(--mx); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + var(--ch) + var(--gy)); }
+
+  .r3c1 { left: var(--mx); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+
+  .card-header {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 0.85px;
+    font-size: 7.6pt;
+    color: #b91c1c;
+    text-align: center;
+    padding: 1.7mm 2.6mm 0.9mm 2.6mm;
+    border-bottom: 1px solid #e7e5e4;
+  }
+
+  .card-subheader {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    font-size: 5.6pt;
+    line-height: 1.15;
+    color: #78716c;
+    text-align: center;
+    margin-top: 0;
+    padding: 0.6mm 2.6mm 0.7mm 2.6mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .rpg-token {
+    display: inline-block;
+    padding: 0 0.28em;
+    border-radius: 0.22em;
+    font-weight: 700;
+    font-family: "Courier New", Courier, monospace;
+    white-space: nowrap;
+    font-size: 0.95em;
+    line-height: 1.1;
+    transform: translateY(-0.05em);
+  }
+  .token-k4  { background:#fef08a; color:#854d0e; border:1px solid #eab308; }
+  .token-k6  { background:#e2e8f0; color:#1e293b; border:1px solid #94a3b8; }
+  .token-k8  { background:#bfdbfe; color:#1e40af; border:1px solid #60a5fa; }
+  .token-k12 { background:#fbcfe8; color:#9d174d; border:1px solid #f472b6; }
+  .token-k20 { background:#bbf7d0; color:#166534; border:1px solid #4ade80; }
+  .token-T   { background:#451a03; color:#ea580c; border:1px solid #9a3412; }
+
+  .content {
+    padding: 1.85mm 2.35mm 1.75mm 2.35mm;
+    font-size: 5.80pt;
+    line-height: 1.05;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2mm;
+  }
+  .h {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 6.05pt;
+    letter-spacing: 0.52px;
+    color: #1c1917;
+    margin: 0 0 0.45mm 0;
+    padding-bottom: 0.18mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+  ul { margin: 0; padding-left: 3.0mm; }
+  li { margin: 0; padding: 0; }
+  ul.tight { list-style: none; padding-left: 0; }
+  .tight li { margin: 0.12mm 0; }
+
+  @media print {
+    .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="card r1c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r1c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r1c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ŚCIĄGA ZASAD</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">POSTAĆ</div>
+<ul class="tight">
+  <li>S/Z/M: <span class="rpg-token token-k12">k12</span>/<span class="rpg-token token-k8">k8</span>/<span class="rpg-token token-k6">k6</span> • Serca5 • PM3 • ŁS2</li>
+  <li>Ekw: klucz+ochr+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ŁS</div>
+<ul class="tight">
+  <li>1ŁS: przerzut (lepszy)</li>
+  <li>1ŁS: kość↑1 (k6→k8→k12→k20)</li>
+  <li>1ŁS: FAIL→OK+k(oszt)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOCE (M) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>FAIL: PM↓+k • +1PM/konfl • odp: pełne</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">RUCH / UPADek</div>
+<ul class="tight">
+  <li>ToM: Bl/Nd/Dl/Bd • tura: ruch+1</li>
+  <li>siatka opc: 5 • 0 Serc: OUT • akcja soj.: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ROZWÓJ</div>
+<ul class="tight">
+  <li>po etapie: kość↑(≤k20) / Serce+(≤7) / PM+(≤5) / Atut(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WROGOWIE</div>
+<ul class="tight">
+  <li>Pach 5/1 • Eli 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Serce = FAZA (nowy ruch/teren/presja)</li>
+</ul></div>
+  <div><div class="h">TESTY</div>
+<ul class="tight">
+  <li>cecha vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T FAIL</li>
+  <li>1=FAIL+k • MAX=OK+ (korzyść)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T</div>
+<ul class="tight">
+  <li>3łat • 4std • 5trud • 6b.tr</li>
+  <li>8hero • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SYTUACJA</div>
+<ul class="tight">
+  <li>lepiej: kość↑1 • gorzej: kość↓1 • pomoc(akcja): kość↑1</li>
+  <li>kość↓: k20→k12→k8→k6→k4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">WALKA</div>
+<ul class="tight">
+  <li>wręcz S / dyst Z vs Obr</li>
+  <li>traf −1 • MAX −2/efekt+</li>
+  <li>osłona/pozycja: kość↑/↓</li>
+  <li>Obr: 4/5/6/8(12) • pudło w zagroż.: k</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">TYLKO <span class="rpg-token token-k6">k6</span> (2k6)</div>
+<ul class="tight">
+  <li>cechy +2/+1/+0 • 2k6+cecha (±1)</li>
+  <li>6− FAIL+k • 7–9 OK+k • 10+ OK • 12 OK+</li>
+  <li>ŁS: przerzut / +1 / FAIL→OK+k</li>
+</ul></div>
+</div>
+</div>
+</div>
+  </div>
+</body>
+</html>

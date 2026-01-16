@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDE — Ściąga zasad 9-up (A4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: #fff;
+    color: #1c1917;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* One printable page */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Poker card */
+  .card {
+    width: 63mm;
+    height: 88mm;
+    box-sizing: border-box;
+    border: 1px solid #e7e5e4;
+    border-radius: 3mm;
+    background: #ffffff;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  /* Fixed 3x3 positions (A4) */
+  :root{
+    --mx: 5.5mm;   /* left/right margin */
+    --my: 11.5mm;  /* top/bottom margin */
+    --gx: 5mm;     /* horizontal gap */
+    --gy: 5mm;     /* vertical gap */
+    --cw: 63mm;    /* card width */
+    --ch: 88mm;    /* card height */
+  }
+
+  .r1c1 { left: var(--mx); top: var(--my); }
+  .r1c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: var(--my); }
+  .r1c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: var(--my); }
+
+  .r2c1 { left: var(--mx); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + var(--ch) + var(--gy)); }
+
+  .r3c1 { left: var(--mx); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+
+  .card-header {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 0.85px;
+    font-size: 7.6pt;
+    color: #b91c1c;
+    text-align: center;
+    padding: 1.7mm 2.6mm 0.9mm 2.6mm;
+    border-bottom: 1px solid #e7e5e4;
+  }
+
+  .card-subheader {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    font-size: 5.6pt;
+    line-height: 1.15;
+    color: #78716c;
+    text-align: center;
+    margin-top: 0;
+    padding: 0.6mm 2.6mm 0.7mm 2.6mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .rpg-token {
+    display: inline-block;
+    padding: 0 0.28em;
+    border-radius: 0.22em;
+    font-weight: 700;
+    font-family: "Courier New", Courier, monospace;
+    white-space: nowrap;
+    font-size: 0.95em;
+    line-height: 1.1;
+    transform: translateY(-0.05em);
+  }
+  .token-k4  { background:#fef08a; color:#854d0e; border:1px solid #eab308; }
+  .token-k6  { background:#e2e8f0; color:#1e293b; border:1px solid #94a3b8; }
+  .token-k8  { background:#bfdbfe; color:#1e40af; border:1px solid #60a5fa; }
+  .token-k12 { background:#fbcfe8; color:#9d174d; border:1px solid #f472b6; }
+  .token-k20 { background:#bbf7d0; color:#166534; border:1px solid #4ade80; }
+  .token-T   { background:#451a03; color:#ea580c; border:1px solid #9a3412; }
+
+  .content {
+    padding: 1.85mm 2.35mm 1.75mm 2.35mm;
+    font-size: 5.80pt;
+    line-height: 1.05;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2mm;
+  }
+  .h {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 6.05pt;
+    letter-spacing: 0.52px;
+    color: #1c1917;
+    margin: 0 0 0.45mm 0;
+    padding-bottom: 0.18mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+  ul { margin: 0; padding-left: 3.0mm; }
+  li { margin: 0; padding: 0; }
+  ul.tight { list-style: none; padding-left: 0; }
+  .tight li { margin: 0.12mm 0; }
+
+  @media print {
+    .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="card r1c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r1c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r1c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">ルールサマリー</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">キャラクター</div>
+<ul class="tight">
+  <li>STR/DEX/POW: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • ハート5 • MP3 • 運2</li>
+  <li>装備: 重要+防具+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">運</div>
+<ul class="tight">
+  <li>1運: 振り直し (良い方)</li>
+  <li>1運: ダイス↑1 (d6→d8→d12→d20)</li>
+  <li>1運: 失敗→成功+代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">異能 (POW) / MP</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>失敗: MP↓+代償 • +1MP/戦闘 • 休憩: 全快</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">移動 / 行動不能</div>
+<ul class="tight">
+  <li>ToM: 近/中/遠/超 • ターン: 移動+1</li>
+  <li>グリッド: 5 • 0ハート: 脱落 • 救援: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">成長</div>
+<ul class="tight">
+  <li>成長: ダイス↑(≤d20) / ハート+(≤7) / MP+(≤5) / 特技(1回)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">敵</div>
+<ul class="tight">
+  <li>雑魚 5/1 • エリート 6/2 • ボス 8/3</li>
+  <li>ボス: −1ハート = フェーズ (新行動/地形/重圧)</li>
+</ul></div>
+  <div><div class="h">判定</div>
+<ul class="tight">
+  <li>能力 vs <span class="rpg-token token-T">T</span> • ≥T 成功 • &lt;T 失敗</li>
+  <li>1=失敗+代償 • MAX=成功+ (利益)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (難易度)</div>
+<ul class="tight">
+  <li>3易 • 4普 • 5難 • 6極難</li>
+  <li>8英雄 • 12伝説</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">状況</div>
+<ul class="tight">
+  <li>有利: ダイス↑1 • 不利: ダイス↓1 • 救援: ダイス↑1</li>
+  <li>ダイス↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">戦闘</div>
+<ul class="tight">
+  <li>近接 STR / 射撃 DEX vs 防御</li>
+  <li>命中 −1 • MAX −2/効果+</li>
+  <li>遮蔽/位置: ダイス↑/↓</li>
+  <li>防御: 4/5/6/8(12) • 危険時のミス: 代償</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;"><span class="rpg-token token-k6">d6</span>のみ (2d6)</div>
+<ul class="tight">
+  <li>能力 +2/+1/+0 • 2d6+能力 (±1)</li>
+  <li>6− 失敗+代償 • 7–9 成功+代償 • 10+ 成功 • 12 成功+</li>
+  <li>運: 振り直し / +1 / 失敗→成功+代償</li>
+</ul></div>
+</div>
+</div>
+</div>
+  </div>
+</body>
+</html>

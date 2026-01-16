@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDE — Ściąga zasad 9-up (A4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: #fff;
+    color: #1c1917;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* One printable page */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* Poker card */
+  .card {
+    width: 63mm;
+    height: 88mm;
+    box-sizing: border-box;
+    border: 1px solid #e7e5e4;
+    border-radius: 3mm;
+    background: #ffffff;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  /* Fixed 3x3 positions (A4) */
+  :root{
+    --mx: 5.5mm;   /* left/right margin */
+    --my: 11.5mm;  /* top/bottom margin */
+    --gx: 5mm;     /* horizontal gap */
+    --gy: 5mm;     /* vertical gap */
+    --cw: 63mm;    /* card width */
+    --ch: 88mm;    /* card height */
+  }
+
+  .r1c1 { left: var(--mx); top: var(--my); }
+  .r1c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: var(--my); }
+  .r1c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: var(--my); }
+
+  .r2c1 { left: var(--mx); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + var(--ch) + var(--gy)); }
+
+  .r3c1 { left: var(--mx); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+
+  .card-header {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 0.85px;
+    font-size: 7.6pt;
+    color: #b91c1c;
+    text-align: center;
+    padding: 1.7mm 2.6mm 0.9mm 2.6mm;
+    border-bottom: 1px solid #e7e5e4;
+  }
+
+  .card-subheader {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    font-size: 5.6pt;
+    line-height: 1.15;
+    color: #78716c;
+    text-align: center;
+    margin-top: 0;
+    padding: 0.6mm 2.6mm 0.7mm 2.6mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .rpg-token {
+    display: inline-block;
+    padding: 0 0.28em;
+    border-radius: 0.22em;
+    font-weight: 700;
+    font-family: "Courier New", Courier, monospace;
+    white-space: nowrap;
+    font-size: 0.95em;
+    line-height: 1.1;
+    transform: translateY(-0.05em);
+  }
+  .token-k4  { background:#fef08a; color:#854d0e; border:1px solid #eab308; }
+  .token-k6  { background:#e2e8f0; color:#1e293b; border:1px solid #94a3b8; }
+  .token-k8  { background:#bfdbfe; color:#1e40af; border:1px solid #60a5fa; }
+  .token-k12 { background:#fbcfe8; color:#9d174d; border:1px solid #f472b6; }
+  .token-k20 { background:#bbf7d0; color:#166534; border:1px solid #4ade80; }
+  .token-T   { background:#451a03; color:#ea580c; border:1px solid #9a3412; }
+
+  .content {
+    padding: 1.85mm 2.35mm 1.75mm 2.35mm;
+    font-size: 5.80pt;
+    line-height: 1.05;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2mm;
+  }
+  .h {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 6.05pt;
+    letter-spacing: 0.52px;
+    color: #1c1917;
+    margin: 0 0 0.45mm 0;
+    padding-bottom: 0.18mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+  ul { margin: 0; padding-left: 3.0mm; }
+  li { margin: 0; padding: 0; }
+  ul.tight { list-style: none; padding-left: 0; }
+  .tight li { margin: 0.12mm 0; }
+
+  @media print {
+    .page { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="card r1c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r1c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r1c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r2c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="card r3c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FICHES RÈGLES</div>
+  <div class="content">
+    <div class="cols">
+  <div><div class="h">PERSONNAGE</div>
+<ul class="tight">
+  <li>FOR/DEX/POU: <span class="rpg-token token-k12">d12</span>/<span class="rpg-token token-k8">d8</span>/<span class="rpg-token token-k6">d6</span> • Cœurs5 • PM3 • Chance2</li>
+  <li>Eq: clé+prot+3</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">CHANCE</div>
+<ul class="tight">
+  <li>1Chance: relance (meilleur)</li>
+  <li>1Chance: dé↑1 (d6→d8→d12→d20)</li>
+  <li>1Chance: ECHEC→OK+c(oût)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">POUVOIRS (POU) / PM</div>
+<ul class="tight">
+  <li><span class="rpg-token token-T">T4</span> 0–1 • <span class="rpg-token token-T">T5</span> 1 • <span class="rpg-token token-T">T6</span> 2 • <span class="rpg-token token-T">T8–12</span> 3</li>
+  <li>ECHEC: PM↓+c • +1PM/confl • repos: plein</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">MOUVEMENT / CHAOS</div>
+<ul class="tight">
+  <li>ToM: Pr/Mo/Lo/TLo • tour: mouv+1</li>
+  <li>grille: 5 • 0 Cœurs: HS • aide: 1</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">PROGRESSION</div>
+<ul class="tight">
+  <li>après étape: dé↑(≤d20) / Cœur+(≤7) / PM+(≤5) / Talent(1/sc)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">ENNEMIS</div>
+<ul class="tight">
+  <li>Sbire 5/1 • Élite 6/2 • Boss 8/3</li>
+  <li>Boss: −1 Cœur = PHASE (nouv mouv/terr/pression)</li>
+</ul></div>
+  <div><div class="h">TESTS</div>
+<ul class="tight">
+  <li>attribut vs <span class="rpg-token token-T">T</span> • ≥T OK • &lt;T ECHEC</li>
+  <li>1=ECHEC+c • MAX=OK+ (bénéfice)</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">T (DIFF)</div>
+<ul class="tight">
+  <li>3fac • 4std • 5diff • 6t.diff</li>
+  <li>8héro • 12leg</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SITUATION</div>
+<ul class="tight">
+  <li>mieux: dé↑1 • pire: dé↓1 • aide: dé↑1</li>
+  <li>dé↓: d20→d12→d8→d6→d4</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">COMBAT</div>
+<ul class="tight">
+  <li>mêlée FOR / dist DEX vs DEF</li>
+  <li>ouche −1 • MAX −2/effet+</li>
+  <li>couv/position: dé↑/↓</li>
+  <li>DEF: 4/5/6/8(12) • raté en danger: coût</li>
+</ul>
+
+<div class="h" style="margin-top:0.7mm;">SEULEMENT <span class="rpg-token token-k6">d6</span> (2d6)</div>
+<ul class="tight">
+  <li>attr +2/+1/+0 • 2d6+attr (±1)</li>
+  <li>6− ECHEC+c • 7–9 OK+c • 10+ OK • 12 OK+</li>
+  <li>Chance: relance / +1 / ECHEC→OK+c</li>
+</ul></div>
+</div>
+</div>
+</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDE — Karta Postaci 9-up (A4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+  @page { size: A4; margin: 0; }
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: #fff;
+    color: #1c1917;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .card {
+    width: 63mm;
+    height: 88mm;
+    box-sizing: border-box;
+    border: 1px solid #e7e5e4;
+    border-radius: 3mm;
+    background: #ffffff;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  /* 3x3 positions */
+  :root{
+    --mx: 5.5mm;
+    --my: 11.5mm;
+    --gx: 5mm;
+    --gy: 5mm;
+    --cw: 63mm;
+    --ch: 88mm;
+  }
+
+  .r1c1 { left: var(--mx); top: var(--my); }
+  .r1c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: var(--my); }
+  .r1c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: var(--my); }
+
+  .r2c1 { left: var(--mx); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + var(--ch) + var(--gy)); }
+  .r2c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + var(--ch) + var(--gy)); }
+
+  .r3c1 { left: var(--mx); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c2 { left: calc(var(--mx) + var(--cw) + var(--gx)); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+  .r3c3 { left: calc(var(--mx) + 2*(var(--cw) + var(--gx))); top: calc(var(--my) + 2*(var(--ch) + var(--gy))); }
+
+  /* Header */
+  .card-header {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    font-size: 7.6pt;
+    color: #b91c1c;
+    text-align: center;
+    padding: 1.65mm 2.6mm 0.9mm 2.6mm;
+    border-bottom: 1px solid #e7e5e4;
+  }
+
+  /* Subheader: centered between rules (no negative margins) */
+  .card-subheader {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    font-size: 5.6pt;
+    line-height: 1.15;
+    color: #78716c;
+    text-align: center;
+    margin: 0;
+    padding: 0.65mm 2.6mm 0.75mm 2.6mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .content {
+    padding: 1.8mm 2.3mm 1.7mm 2.3mm;
+    font-size: 5.75pt;
+    line-height: 1.05;
+  }
+
+  .row { margin-bottom: 0.75mm; }
+  .field {
+    display: grid;
+    grid-template-columns: 16mm 1fr;
+    gap: 1.4mm;
+    align-items: end;
+  }
+  .label {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 5.65pt;
+    letter-spacing: 0.4px;
+    color: #1c1917;
+    white-space: nowrap;
+  }
+  .line {
+    border-bottom: 1px solid #d6d3d1;
+    height: 4.2mm;
+  }
+
+  .section { margin-top: 1.0mm; }
+  .h {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 5.85pt;
+    letter-spacing: 0.45px;
+    color: #1c1917;
+    margin: 0 0 0.55mm 0;
+    padding-bottom: 0.2mm;
+    border-bottom: 1px solid #f5f5f4;
+  }
+
+  .attr-grid { display: grid; gap: 0.5mm; }
+  .attr { display: grid; grid-template-columns: 4.5mm 1fr; gap: 1.2mm; align-items: center; }
+  .attr-name {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 6.0pt;
+    color: #1c1917;
+    text-align: center;
+    border: 1px solid #e7e5e4;
+    border-radius: 1.4mm;
+    padding: 0.35mm 0;
+    background: #fafaf9;
+  }
+  .dice { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.7mm; }
+  .d {
+    border: 1px solid #d6d3d1;
+    border-radius: 1.2mm;
+    text-align: center;
+    padding: 0.25mm 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 5.0pt;
+    color: #44403c;
+    background: #fff;
+  }
+
+  .track-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55mm;
+  }
+  .track { display: grid; grid-template-columns: 11mm 1fr; gap: 1.2mm; align-items: center; }
+  .tlabel {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: 5.55pt;
+    letter-spacing: 0.35px;
+    color: #1c1917;
+    white-space: nowrap;
+  }
+  .boxes { display: grid; gap: 0.65mm; }
+  .boxes.seven { grid-template-columns: repeat(7, 1fr); }
+  .boxes.five  { grid-template-columns: repeat(5, 1fr); }
+  .boxes.two   { grid-template-columns: repeat(2, 1fr); }
+  .box {
+    height: 3.4mm;
+    border: 1px solid #d6d3d1;
+    border-radius: 0.9mm;
+    background: #fff;
+  }
+
+  .lines { display: grid; gap: 0.8mm; }
+  .line2 {
+    border-bottom: 1px solid #d6d3d1;
+    height: 4.0mm;
+  }
+
+  .micro {
+    margin-top: 0.55mm;
+    font-size: 5.15pt;
+    line-height: 1.12;
+    color: #78716c;
+  }
+
+  .rpg-token {
+    display: inline-block;
+    padding: 0 0.28em;
+    border-radius: 0.22em;
+    font-weight: 700;
+    font-family: "Courier New", Courier, monospace;
+    white-space: nowrap;
+    font-size: 0.95em;
+    line-height: 1.1;
+    transform: translateY(-0.05em);
+  }
+  .token-T { background:#451a03; color:#ea580c; border:1px solid #9a3412; }
+
+  @media print { .page { page-break-after: always; } }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="card r1c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r1c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r1c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r2c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r2c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r2c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r3c1">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r3c2">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card r3c3">
+<div class="card-header">NANO DUNGEON ENGINE</div>
+  <div class="card-subheader">FEUILLE DE PERSONNAGE</div>
+
+  <div class="content">
+    <!-- Identity -->
+    <div class="row">
+      <div class="field">
+        <div class="label">NOM</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">CONCEPT</div><div class="line"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <div class="label">ARCHÉTYPE</div><div class="line"></div>
+      </div>
+    </div>
+
+    <!-- Attributes -->
+    <div class="section">
+      <div class="h">ATTRIBUTS (cocher le dé actuel)</div>
+      <div class="attr-grid">
+        <div class="attr">
+          <div class="attr-name">FOR</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">DEX</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+        <div class="attr">
+          <div class="attr-name">POU</div>
+          <div class="dice">
+            <div class="d">d4</div><div class="d">d6</div><div class="d">d8</div><div class="d">d12</div><div class="d">d20</div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        Test : dé d'attribut vs <span class="rpg-token token-T">T</span> • 1=ECHEC+c • MAX=SUCCES+
+      </div>
+    </div>
+
+    <!-- Trackers -->
+    <div class="section">
+      <div class="h">RESSOURCES</div>
+      <div class="track-grid">
+        <div class="track">
+          <div class="tlabel">COEURS</div>
+          <div class="boxes seven">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">PM</div>
+          <div class="boxes five">
+            <div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+        <div class="track">
+          <div class="tlabel">CHANCE</div>
+          <div class="boxes two">
+            <div class="box"></div><div class="box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="micro">
+        CHANCE : relance • dé↑1 • ECHEC→SUCCES+c • PM (POU) : <span class="rpg-token token-T">T4</span>0–1 / <span class="rpg-token token-T">T5</span>1 / <span class="rpg-token token-T">T6</span>2 / <span class="rpg-token token-T">T8–12</span>3
+      </div>
+    </div>
+
+    <!-- Inventory & notes -->
+    <div class="section">
+      <div class="h">ÉQUIPEMENT</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="h">TALENTS / NOTES</div>
+      <div class="lines">
+        <div class="line2"></div>
+        <div class="line2"></div>
+      </div>
+      <div class="micro">
+        Progression: dé↑ / +Cœur (≤7) / +PM (≤5) / Talent (1/scène)
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</body>
+</html>
