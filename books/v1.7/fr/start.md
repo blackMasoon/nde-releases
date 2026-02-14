@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-14T12:08:17.593Z"
+generated_at: "2026-02-14T10:49:15.132Z"
 ---
 
 
@@ -49,6 +49,11 @@ generated_at: "2026-01-14T12:08:17.593Z"
     .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
     .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
     .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-luck { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-power { background-color: #e9d5ff; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-heart { background-color: #fecaca; color: #991b1b; border: 1px solid #ef4444; }
+    .token-stat { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-math { background-color: #1e293b; color: #38bdf8; border: 1px solid #0f172a; }
     
     /* Footer Styling */
     .pdf-footer {
@@ -80,158 +85,181 @@ Automatic translation placeholder for fr
 
 ---
 
-### [ERROR] 1) Bohater w 1 minutę
+### Héros en 1 minute
 
-[Translation Failed] * **Koncept:** kim jesteś i w jakim gatunku grasz (1 zdanie).
-* **Rola (wybierz jedną):**
+* **Concept :** qui es-tu et dans quel genre joues-tu (1 phrase).
+* **Rôle (choisis-en un) :**
 
-  * **Szturm** – presja, walka, przełamywanie przeszkód
-  * **Specjalista** – skradanie, precyzja, technika, obserwacja
-  * **Adept** – moce, wiedza, wpływ, improwizacja
-* **Cechy (3):**
+  * **Assaut** – pression, combat, franchissement d'obstacles
+  * **Spécialiste** – discrétion, précision, technique, observation
+  * **Adepte** – pouvoirs, connaissance, influence, improvisation
+* **Caractéristiques :**
 
-  * **Siła (S)** – siła fizyczna, wytrzymałość, walka wręcz
-  * **Zręczność (Z)** – refleks, skradanie, strzelanie, pilotowanie
-  * **Moc (M)** – magia/psionika/technologia/blef/intuicja (zależnie od świata)
-* **Kości cech:** jedna cecha **<span class="rpg-token token-d12">k12</span>**, jedna **<span class="rpg-token token-d8">k8</span>**, jedna **<span class="rpg-token token-d6">k6</span>** (wybierz zgodnie z rolą).
-* **Serca:** 5. **Punkty Mocy:** 3 (wydajesz na moce i „zagrania specjalne”).
-Poniżej masz gotowy fragment do wklejenia (wariant A), w stylistyce krótkich zasad „1-page”.
+  * **Force (F)** – force physique, endurance, combat rapproché
+  * **Agilité (A)** – réflexes, discrétion, tir, pilotage
+  * **Pouvoir (<span class="rpg-token token-stat">P</span>)** – magie/psychokinésie/technologie/bluff/intuition (selon le monde)
+* **Dés de caractéristiques :** une caractéristique **<span class="rpg-token token-d12">k12</span>**, une **<span class="rpg-token token-d8">k8</span>**, une **<span class="rpg-token token-d6">k6</span>** (choisis selon le rôle).
+* **Cœurs :** 5. **Points de Pouvoir :** 3 (tu les dépenses pour des pouvoirs et des « actions spéciales »).
+Voici un extrait prêt à être collé (variante A), dans le style des règles courtes « 1-page ».
 
-**Łut Szczęścia (jak działa):** wydaj **1 ŁS**, aby wybrać jedno:
+**Jet de Chance (comment ça fonctionne) :** dépense **1 JP**, pour choisir une des options suivantes :
 
-* **Przerzut** swojego testu (zostawiasz lepszy wynik), albo
-* **Podbicie kości o 1 stopień** na ten jeden rzut (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), albo
-* **Zamiana porażki na „sukces z kosztem”** — akcja się udaje, ale MG natychmiast dokłada cenę (np. tracisz czas, robisz hałas, zużywasz zasób, kończysz w gorszej pozycji, przyciągasz uwagę, psujesz sprzęt).
+* **Relance** de ton test (tu gardes le meilleur résultat), ou
+* **Augmentation du dé d'un niveau** pour ce jet unique (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), ou
+* **Transformation d'un échec en « succès avec coût »** — l'action réussit, mais le MJ impose immédiatement un prix (par exemple, tu perds du temps, fais du bruit, utilises une ressource, finis dans une position moins favorable, attires l'attention, abîmes du matériel).
 
-**Odzysk ŁS:** na początku kolejnej sesji wracasz do limitu. MG może przyznać **+1 ŁS** za odważne ryzyko, świetną decyzję fabularną lub granie konsekwencjami.
+**Récupération de JP :** au début de la prochaine session, tu reviens à la limite. Le MJ peut accorder **+1 JP** pour un risque audacieux, une excellente décision narrative ou le jeu des conséquences.
 
-* **Ekwipunek:** 1 narzędzie „kluczowe” (np. miecz, karabin, zestaw hakerski), 1 ochrona (pancerz, tarcza energetyczna, kamuflaż), 3 drobiazgi pasujące do konceptu.
+* **Équipement :** 1 outil « clé » (par exemple, épée, fusil, kit de hacking), 1 protection (armure, bouclier énergétique, camouflage), 3 bricoles correspondant au concept.
 
-**Przykład:** Specjalista: Z <span class="rpg-token token-d12">k12</span>, M <span class="rpg-token token-d8">k8</span>, S <span class="rpg-token token-d6">k6</span>. W cyberpunku M to „Hacking/Influence”; w fantasy M to „Magia/Wola”.
-
-
-
----
-
-### [ERROR] 2) Jak rozstrzygać akcje
-
-[Translation Failed] 1. Gracz mówi **co robi** i **jak** (opis w świecie gry).
-2. Prowadzący ustala **Trudność** i stawkę („co się stanie przy porażce”).
-3. Rzuć kością cechy (S/Z/M) i porównaj z Trudnością.
-
-**Trudność (T):**
-
-* **3** łatwe, **4** standard, **5** trudne, **6** bardzo trudne, **8** heroiczne, **12** legendarne.
-
-**Wynik rzutu:**
-
-* **1** – porażka z konsekwencją (komplikacja wchodzi na pewno).
-* **< T** – porażka (ale scena idzie dalej: strata czasu, hałas, gorsza pozycja, utrata zasobu).
-* **≥ T** – sukces.
-* **Maks na kości** (np. 12 na <span class="rpg-token token-d12">k12</span>, 20 na <span class="rpg-token token-d20">k20</span>) – sukces wyjątkowy: dostajesz dodatkową korzyść.
-
-**Modyfikatory bez liczenia:**
-
-* **Lepsza sytuacja**: podbij kość o 1 stopień (<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>).
-* **Gorsza sytuacja**: obniż kość o 1 stopień (<span class="rpg-token token-d20">k20</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d4">k4</span>).
-* **Pomoc sojusznika** (kosztuje jego akcję): podbij kość o 1 stopień.
-
-**Przykład:** Adept próbuje zamknąć portal (M <span class="rpg-token token-d8">k8</span>) przy alarmie i stresie → gorsza sytuacja, spada na <span class="rpg-token token-d6">k6</span>. T = 5. Rzut 6: sukces, ale „alarm” zostaje w tle jako presja fabularna.
+**Exemple :** Spécialiste : F <span class="rpg-token token-d12">k12</span>, <span class="rpg-token token-stat">P</span> <span class="rpg-token token-d8">k8</span>, A <span class="rpg-token token-d6">k6</span>. Dans un univers cyberpunk, <span class="rpg-token token-stat">P</span> est « Hacking/Influence » ; dans un univers fantastique, <span class="rpg-token token-stat">P</span> est « Magie/Volonté ».
 
 
 
 ---
 
-### [ERROR] 3) Ruch i walka – domyślnie bez siatki, siatka jako opcja
+### 2) Comment résoudre les actions
 
-[Translation Failed] **Domyślnie: theatre of mind (zalecane)**
+1. Le joueur dit **ce qu'il fait** et **comment** (description dans le monde du jeu).
+2. Le meneur de jeu détermine la **Difficulté** et l'enjeu ("que se passera-t-il en cas d'échec").
+3. Lance le dé de caractéristique (D/I/C) et compare avec la Difficulté.
 
-* Odległości opisuj jako: **Blisko** (na wyciągnięcie), **Niedaleko** (kilka kroków), **Daleko** (druga strona sceny), **Bardzo daleko** (snajpersko/pojazdowo).
-* W turze masz: **Przemieszczenie + 1 Akcję**.
+**Difficulté (D) :**
 
-  * Przemieszczenie zwykle zmienia odległość o 1 „stopień” (Niedaleko→Blisko itp.).
-* **Atak**: rzut **S** (wręcz) albo **Z** (dystans) przeciw **Obronie** celu.
+* **3** facile, **4** standard, **5** difficile, **6** très difficile, **8** héroïque, **12** légendaire.
 
-**Obrona przeciwników (orientacyjnie):**
+**Résultat du lancer :**
 
-* **Słaby** 4, **Typowy** 5, **Elita** 6, **Boss** 8 (legendarny boss 12).
+* **1** – échec avec conséquence (la complication se produit à coup sûr).
+* **< D** – échec (mais la scène continue : perte de temps, bruit, position moins favorable, perte de ressource).
+* **≥ D** – succès.
+* **Max sur le dé** (par exemple, 12 sur <span class="rpg-token token-d12">k12</span>, 20 sur <span class="rpg-token token-d20">k20</span>) – succès exceptionnel : vous obtenez un avantage supplémentaire.
 
-**Skutki trafienia (szybka walka):**
+**Modificateurs sans compter :**
 
-* Trafienie zadaje **1 Serce**.
-* Sukces wyjątkowy zadaje **2 Serca** albo daje silny efekt (rozbrojenie, przewrócenie, rozproszenie).
+* **Meilleure situation** : augmentez le dé d'un niveau (<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>).
+* **Pire situation** : réduisez le dé d'un niveau (<span class="rpg-token token-d20">k20</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d4">k4</span>).
+* **Aide d'un allié** (coûte son action) : augmentez le dé d'un niveau.
 
-**Osłona i przewaga pozycyjna:**
-
-* Lekka osłona / gorszy kąt: obniż kość atakującego o 1 stopień.
-* Dobra pozycja / zaskoczenie: podbij kość o 1 stopień.
-
-**Opcja: gra na siatce**
-
-* 1 kratka = 1–2 m. Ruch w turze: **do 5 kratek**. Reszta zasad bez zmian.
-
-**Przykład:** Specjalista strzela z osłony (Z <span class="rpg-token token-d12">k12</span>) do elity (Obrona 6). Cel jest w lekkiej osłonie → Z spada na <span class="rpg-token token-d8">k8</span>. Rzut 7: sukces, 1 Serce obrażeń.
+**Exemple :** L'adepte essaie de fermer le portail (D <span class="rpg-token token-d8">k8</span>) sous alarme et stress → pire situation, passe à <span class="rpg-token token-d6">k6</span>. D = 5. Lancer 6 : succès, mais "l'alarme" reste en arrière-plan comme pression narrative.
 
 
 
 ---
 
-### [ERROR] 4) Moce, „czary” i zagrania specjalne (uniwersalne)
+### 3) Mouvement et combat
 
-[Translation Failed] To obejmuje magię, psionikę, cybernetykę, gadżety, sztuczki filmowe – zależnie od świata.
+**Distances et déplacement**
 
-* Gdy robisz coś **ponad standard**: wydaj **Punkt Mocy** i rzuć **M**.
-* Ustal poziom efektu:
+* Décrivez les distances comme : **Proche** (à portée de main), **Pas loin** (quelques pas), **Loin** (de l'autre côté de la scène), **Très loin** (sniper/véhicule).
+* À votre tour, vous avez : **Déplacement + 1 Action**.
 
-**Poziomy mocy (T / koszt):**
+  * Le déplacement change généralement la distance d'1 « degré » (Pas loin → Proche, etc.).
+* **Attaque** : jet **<span class="rpg-token token-stat">M</span>** (corps à corps) ou **D** (distance) contre **Défense** de la cible.
 
-* **Sztuczka** (krótki efekt, trik, „flash”): **T 4 / 0–1 PM**
-* **Standard** (atak, tarcza, impuls, kontrola drobna): **T 5 / 1 PM**
-* **Silna** (obszar, leczenie, paraliż, hack „na żywo”): **T 6 / 2 PM**
-* **Wielka** (zmiana sceny, potężna ingerencja): **T 8–12 / 3 PM**
+**Défense des adversaires (indicatif) :**
 
-**Porażka:** PM przepada, a konsekwencja jest natychmiastowa (przeciążenie, ślad cyfrowy, rysa w rytuale, niechciana uwaga).
+* **Faible** 4, **Typique** 5, **Elite** 6, **Boss** 8 (boss légendaire 12).
 
-**Odzysk:** po scenie konfliktu odzyskujesz **1 PM**, po bezpiecznym odpoczynku – do pełna.
+**Effets d'un coup (combat rapide) :**
 
-**Przykład:** W space-operze Adept próbuje „zagiąć sensor” drona: Standard, T 5, koszt 1 PM. Rzut M <span class="rpg-token token-d8">k8</span> = 8: sukces wyjątkowy – dron traci sygnał i myli trop.
+* Un coup inflige **1 Cœur**.
+* Un succès exceptionnel inflige **2 Cœurs** ou donne un effet fort (désarmement, renversement, dispersion).
 
+**Couverture et avantage positionnel :**
 
+* Couverture légère / mauvais angle : abaissez le dé de l'attaquant d'1 degré.
+* Bonne position / surprise : augmentez le dé d'1 degré.
 
----
+**Option : jeu sur grille**
 
-### [ERROR] 5) Upadek, ryzyko i leczenie
+* 1 case = 1–2 m. Mouvement par tour : **jusqu'à 5 cases**. Le reste des règles reste inchangé.
 
-[Translation Failed] * Gdy spadasz do **0 Serc**, jesteś **wyłączony z akcji** (raniony, ogłuszony, w szoku – według konwencji).
-* Sojusznik może zużyć akcję, by postawić cię na **1 Serce** (pierwsza pomoc, adrenalina, restart systemu).
-* Po scenie, jeśli macie chwilę oddechu: wracacie do **pełnych Serc**, o ile macie warunki (schronienie, opatrunek, serwis, posiłek).
-* Jeżeli scena była wyjątkowo brutalna albo wrogowie mają przewagę, Prowadzący może wymagać, by „pełny reset” wymagał bezpiecznego postoju.
-
-**Przykład:** Szturm spada do 0. Specjalista wciąga go za osłonę i zużywa akcję: Szturm wraca na 1 Serce i może działać w następnej turze.
+**Exemple :** Un spécialiste tire depuis une couverture (D sur un <span class="rpg-token token-d12">d12</span>) sur une élite (Défense 6). La cible est en légère couverture → D tombe à un <span class="rpg-token token-d8">d8</span>. Jet 7 : succès, 1 Cœur de dégâts.
 
 
 
 ---
 
-### 6) Développement des PERSONNAGES
+### 4) Pouvoirs, « sorts » et actions spéciales (universels)
 
-Po l'aventure, choisis une option :
-- Augmente un attribut d'une taille de dé : <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
-- ou +1 Cœur (max 7),
-- ou +1 Mana (max 5).
-Exemple : Le Guerrier augmente sa Force de <span class="rpg-token token-d10">d10</span> à <span class="rpg-token token-d12">d12</span> — il est plus facile d'atteindre la <span class="rpg-token token-tn">TN</span> 12.
+
+Cela inclut la magie, la psionique, la cybernétique, les gadgets, les tours de magie – selon le monde.
+
+* Lorsque vous faites quelque chose **au-delà de la norme** : dépensez **un Point de Pouvoir** et lancez **<span class="rpg-token token-stat">M</span>**.
+* Déterminez le niveau de l'effet :
+
+**Niveaux de puissance (T / coût) :**
+
+* **Tour** (effet court, astuce, « flash ») : **T 4 / 0–1 PP**
+* **Standard** (attaque, bouclier, impulsion, contrôle mineur) : **T 5 / 1 PP**
+* **Fort** (zone, guérison, paralysie, hack « en direct ») : **T 6 / 2 PP**
+* **Grand** (changement de scène, intervention puissante) : **T 8–12 / 3 PP**
+
+**Échec :** Les PP sont perdus, et la conséquence est immédiate (surcharge, trace numérique, fissure dans le rituel, attention indésirable).
+
+**Récupération :** après la scène de conflit, vous récupérez **1 PP**, après un repos en sécurité – jusqu'à plein.
+
+**Exemple :** Dans une opération spatiale, l'Adept essaie de « plier le capteur » d'un drone : Standard, T 5, coût 1 PP. Lancer <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span> = 8 : succès exceptionnel – le drone perd le signal et se trompe de piste.
 
 
 
 ---
 
-### 7) Variante seulement-<span class="rpg-token token-d6">d6</span>
+### 5) Chute, risque et guérison
 
-Lorsque vous n'avez qu'un seul dé <span class="rpg-token token-d6">d6</span> :
-- Au lieu des tailles de dés, chaque caractéristique a un seuil de réussite :
-  - Maître 3+, Formé 4+, Novice 5+, Sans compétence 6.
-- La <span class="rpg-token token-tn">TN</span> modifie toujours la situation d'un degré (plus facile/difficile).
-- Aide : abaissez le seuil de 1 (par exemple, de 4+ à 3+ pour ce lancer).
-- Développement : augmentez le niveau d'une caractéristique (par exemple, Formé 4+ → Maître 3+) ou +1 Cœur/Mana.
-Exemple : Tir de Voleur (Formé 4+) sur une cible en légère couverture (d'un degré plus difficile) nécessite 5+. Lancer <span class="rpg-token token-d6">d6</span>=5 — touche.
+* Lorsque vous tombez à **0 Cœurs**, vous êtes **hors de l'action** (blessé, étourdi, en état de choc – selon la convention).
+* Un allié peut utiliser une action pour vous remettre à **1 Cœur** (premiers secours, adrénaline, redémarrage du système).
+* Après la scène, si vous avez un moment de répit : vous revenez à **Cœurs pleins**, tant que vous avez les conditions nécessaires (abri, bandage, service, repas).
+* Si la scène a été particulièrement brutale ou si les ennemis ont l'avantage, le Maître de Jeu peut exiger qu'un « réinitialisation complète » nécessite un arrêt en toute sécurité.
+
+**Exemple :** L'assaut tombe à 0. Le spécialiste le tire derrière une couverture et utilise une action : l'assaut revient à 1 Cœur et peut agir au tour suivant.
+
+
+
+---
+
+### 6) Développement du personnage (campagne sans tableaux ni comptabilité)
+
+
+Après l'aventure, choisis **une** option :
+
+* **Augmente** une caractéristique de 1 niveau (max. jusqu'à <span class="rpg-token token-d20">k20</span>), ou
+* **+1 Cœur** (max. 7), ou
+* **+1 Point de Pouvoir** (max. 5), ou
+* **Nouvel Avantage** (règle courte, en une phrase convenue avec le Maître de Jeu).
+
+**Exemples d'avantages (universels) :**
+
+* **Pression :** une fois par scène, lorsque tu touches au corps à corps, tu infliges +1 Cœur de dégâts.
+* **Ombre :** lorsque tu agis dans l'ombre, tu as un bonus de dés de 1 niveau.
+* **Étincelle :** une fois par scène, tu peux dépenser 1 <span class="rpg-token token-power">PM</span> pour obtenir automatiquement un « succès avec coût » sans lancer de dé.
+
+**Exemple :** L'Adepte augmente <span class="rpg-token token-stat">M</span> de <span class="rpg-token token-d8">k8</span> à <span class="rpg-token token-d12">k12</span> – maintenant ses pouvoirs se stabilisent mieux avec T 5–6.
+
+
+
+---
+
+### 7) Variante « uniquement <span class="rpg-token token-d6">k6</span> » en mode **2k6** (rapide et très jouable)
+
+
+Si vous n'avez pas de jeu de dés ou si vous souhaitez des degrés de résultat plus « narratifs » :
+
+* Chaque test est : **lancez 2k6 + modificateur de caractéristique**.
+* **Modificateurs de caractéristiques** à choisir au départ : une caractéristique **+2**, une **+1**, une **+0**.
+* Résultat :
+
+  * **6 ou moins** – échec avec conséquence
+  * **7–9** – succès avec coût (compromis, perte de ressource, position défavorable)
+  * **10+** – succès complet
+  * **12** – succès exceptionnel (avantage supplémentaire)
+
+**Difficulté de la situation :** au lieu de changer les seuils, ajoutez **+1 / -1** au lancer (facilite / complique) ou un coût en cas de 7–9.
+
+**Mapping vers la version dés-caractéristiques (si vous souhaitez la compatibilité) :**
+
+* <span class="rpg-token token-d6">k6</span> ≈ +0, <span class="rpg-token token-d8">k8</span> ≈ +1, <span class="rpg-token token-d12">k12</span> ≈ +2, <span class="rpg-token token-d20">k20</span> ≈ +3 (pour des personnages très expérimentés).
+
+**Exemple :** Un spécialiste tire en courant : <span class="rpg-token token-stat">Z</span> = +2, situation difficile (-1). Lancer 2k6 = 8, somme 9 : succès avec coût – il touche, mais finit en position exposée.
 
