@@ -15,7 +15,7 @@ pdf_options:
     bottom: "20mm"
     left: "20mm"
     right: "20mm"
-generated_at: "2026-01-14T12:08:10.338Z"
+generated_at: "2026-02-14T10:33:05.029Z"
 ---
 
 
@@ -49,6 +49,11 @@ generated_at: "2026-01-14T12:08:10.338Z"
     .token-d12 { background-color: #fbcfe8; color: #9d174d; border: 1px solid #f472b6; }
     .token-d20 { background-color: #bbf7d0; color: #166534; border: 1px solid #4ade80; }
     .token-tn { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-luck { background-color: #fef08a; color: #854d0e; border: 1px solid #eab308; }
+    .token-power { background-color: #e9d5ff; color: #6b21a8; border: 1px solid #c084fc; }
+    .token-heart { background-color: #fecaca; color: #991b1b; border: 1px solid #ef4444; }
+    .token-stat { background-color: #451a03; color: #ea580c; border: 1px solid #9a3412; }
+    .token-math { background-color: #1e293b; color: #38bdf8; border: 1px solid #0f172a; }
     
     /* Footer Styling */
     .pdf-footer {
@@ -80,149 +85,179 @@ generated_at: "2026-01-14T12:08:10.338Z"
 
 ---
 
-### [ERROR] 1) Bohater w 1 minutę
+### Hero in 1 Minute
 
-[Translation Failed] * **Koncept:** kim jesteś i w jakim gatunku grasz (1 zdanie).
-* **Rola (wybierz jedną):**
+* **Concept:** who you are and what genre you are playing (1 sentence).
+* **Role (choose one):**
 
-  * **Szturm** – presja, walka, przełamywanie przeszkód
-  * **Specjalista** – skradanie, precyzja, technika, obserwacja
-  * **Adept** – moce, wiedza, wpływ, improwizacja
-* **Cechy (3):**
+  * **Assault** – pressure, combat, overcoming obstacles
+  * **Specialist** – sneaking, precision, technique, observation
+  * **Adept** – powers, knowledge, influence, improvisation
+* **Attributes:**
 
-  * **Siła (S)** – siła fizyczna, wytrzymałość, walka wręcz
-  * **Zręczność (Z)** – refleks, skradanie, strzelanie, pilotowanie
-  * **Moc (M)** – magia/psionika/technologia/blef/intuicja (zależnie od świata)
-* **Kości cech:** jedna cecha **<span class="rpg-token token-d12">k12</span>**, jedna **<span class="rpg-token token-d8">k8</span>**, jedna **<span class="rpg-token token-d6">k6</span>** (wybierz zgodnie z rolą).
-* **Serca:** 5. **Punkty Mocy:** 3 (wydajesz na moce i „zagrania specjalne”).
-Poniżej masz gotowy fragment do wklejenia (wariant A), w stylistyce krótkich zasad „1-page”.
+  * **Strength (<span class="rpg-token token-stat">S</span>)** – physical strength, endurance, melee combat
+  * **Agility (A)** – reflexes, sneaking, shooting, piloting
+  * **Might (<span class="rpg-token token-stat">M</span>)** – magic/psionics/technology/bluff/intuition (depending on the world)
+* **Attribute Dice:** one attribute **<span class="rpg-token token-d12">d12</span>**, one **<span class="rpg-token token-d8">d8</span>**, one **<span class="rpg-token token-d6">d6</span>** (choose according to your role).
+* **Hearts:** 5. **<span class="rpg-token token-power">Power</span> Points:** 3 (spend on powers and "special moves").
 
-**Łut Szczęścia (jak działa):** wydaj **1 ŁS**, aby wybrać jedno:
+**<span class="rpg-token token-luck">Luck</span> Roll (how it works):** spend **1 <span class="rpg-token token-luck">Luck</span> Point**, to choose one:
 
-* **Przerzut** swojego testu (zostawiasz lepszy wynik), albo
-* **Podbicie kości o 1 stopień** na ten jeden rzut (**<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>**), albo
-* **Zamiana porażki na „sukces z kosztem”** — akcja się udaje, ale MG natychmiast dokłada cenę (np. tracisz czas, robisz hałas, zużywasz zasób, kończysz w gorszej pozycji, przyciągasz uwagę, psujesz sprzęt).
+* **Reroll** your test (keep the better result), or
+* **Increase the die by 1 step** for this one roll (**<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>**), or
+* **Turn a failure into a "success at a cost"** — the action succeeds, but the GM immediately adds a price (e.g., you lose time, make noise, expend a resource, end up in a worse position, attract attention, damage equipment).
 
-**Odzysk ŁS:** na początku kolejnej sesji wracasz do limitu. MG może przyznać **+1 ŁS** za odważne ryzyko, świetną decyzję fabularną lub granie konsekwencjami.
+**Recovering <span class="rpg-token token-luck">Luck</span> Points:** at the beginning of the next session, you return to the limit. The GM may grant **+1 <span class="rpg-token token-luck">Luck</span> Point** for bold risks, great narrative decisions, or playing consequences.
 
-* **Ekwipunek:** 1 narzędzie „kluczowe” (np. miecz, karabin, zestaw hakerski), 1 ochrona (pancerz, tarcza energetyczna, kamuflaż), 3 drobiazgi pasujące do konceptu.
+* **Equipment:** 1 "key" tool (e.g., sword, rifle, hacking kit), 1 protection (armor, energy shield, camouflage), 3 trinkets fitting the concept.
 
-**Przykład:** Specjalista: Z <span class="rpg-token token-d12">k12</span>, M <span class="rpg-token token-d8">k8</span>, S <span class="rpg-token token-d6">k6</span>. W cyberpunku M to „Hacking/Influence”; w fantasy M to „Magia/Wola”.
-
-
-
----
-
-### [ERROR] 2) Jak rozstrzygać akcje
-
-[Translation Failed] 1. Gracz mówi **co robi** i **jak** (opis w świecie gry).
-2. Prowadzący ustala **Trudność** i stawkę („co się stanie przy porażce”).
-3. Rzuć kością cechy (S/Z/M) i porównaj z Trudnością.
-
-**Trudność (T):**
-
-* **3** łatwe, **4** standard, **5** trudne, **6** bardzo trudne, **8** heroiczne, **12** legendarne.
-
-**Wynik rzutu:**
-
-* **1** – porażka z konsekwencją (komplikacja wchodzi na pewno).
-* **< T** – porażka (ale scena idzie dalej: strata czasu, hałas, gorsza pozycja, utrata zasobu).
-* **≥ T** – sukces.
-* **Maks na kości** (np. 12 na <span class="rpg-token token-d12">k12</span>, 20 na <span class="rpg-token token-d20">k20</span>) – sukces wyjątkowy: dostajesz dodatkową korzyść.
-
-**Modyfikatory bez liczenia:**
-
-* **Lepsza sytuacja**: podbij kość o 1 stopień (<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d20">k20</span>).
-* **Gorsza sytuacja**: obniż kość o 1 stopień (<span class="rpg-token token-d20">k20</span>→<span class="rpg-token token-d12">k12</span>→<span class="rpg-token token-d8">k8</span>→<span class="rpg-token token-d6">k6</span>→<span class="rpg-token token-d4">k4</span>).
-* **Pomoc sojusznika** (kosztuje jego akcję): podbij kość o 1 stopień.
-
-**Przykład:** Adept próbuje zamknąć portal (M <span class="rpg-token token-d8">k8</span>) przy alarmie i stresie → gorsza sytuacja, spada na <span class="rpg-token token-d6">k6</span>. T = 5. Rzut 6: sukces, ale „alarm” zostaje w tle jako presja fabularna.
+**Example:** Specialist: <span class="rpg-token token-stat">S</span> <span class="rpg-token token-d12">d12</span>, <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">d8</span>, A <span class="rpg-token token-d6">d6</span>. In cyberpunk, <span class="rpg-token token-stat">M</span> is "Hacking/Influence"; in fantasy, <span class="rpg-token token-stat">M</span> is "Magic/Will".
 
 
 
 ---
 
-### [ERROR] 3) Ruch i walka – domyślnie bez siatki, siatka jako opcja
+### 2) How to Resolve Actions
 
-[Translation Failed] **Domyślnie: theatre of mind (zalecane)**
+1. The player states **what they do** and **how** (description in the game world).
+2. The Game Master determines the **Difficulty** and the stakes ("what happens on failure").
+3. Roll the attribute die (<span class="rpg-token token-stat">S</span>/<span class="rpg-token token-stat">Z</span>/<span class="rpg-token token-stat">M</span>) and compare it to the Difficulty.
 
-* Odległości opisuj jako: **Blisko** (na wyciągnięcie), **Niedaleko** (kilka kroków), **Daleko** (druga strona sceny), **Bardzo daleko** (snajpersko/pojazdowo).
-* W turze masz: **Przemieszczenie + 1 Akcję**.
+**Difficulty (D):**
 
-  * Przemieszczenie zwykle zmienia odległość o 1 „stopień” (Niedaleko→Blisko itp.).
-* **Atak**: rzut **S** (wręcz) albo **Z** (dystans) przeciw **Obronie** celu.
+* **3** easy, **4** standard, **5** hard, **6** very hard, **8** heroic, **12** legendary.
 
-**Obrona przeciwników (orientacyjnie):**
+**Roll Result:**
 
-* **Słaby** 4, **Typowy** 5, **Elita** 6, **Boss** 8 (legendarny boss 12).
+* **1** – failure with consequence (a complication definitely arises).
+* **< D** – failure (but the scene continues: loss of time, noise, worse position, loss of resource).
+* **≥ D** – success.
+* **Max on the die** (e.g., 12 on a <span class="rpg-token token-d12">d12</span>, 20 on a <span class="rpg-token token-d20">d20</span>) – exceptional success: you gain an additional benefit.
 
-**Skutki trafienia (szybka walka):**
+**Modifiers without counting:**
 
-* Trafienie zadaje **1 Serce**.
-* Sukces wyjątkowy zadaje **2 Serca** albo daje silny efekt (rozbrojenie, przewrócenie, rozproszenie).
+* **Better situation**: increase the die by 1 step (<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>).
+* **Worse situation**: decrease the die by 1 step (<span class="rpg-token token-d20">d20</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d4">d4</span>).
+* **Ally's help** (costs their action): increase the die by 1 step.
 
-**Osłona i przewaga pozycyjna:**
-
-* Lekka osłona / gorszy kąt: obniż kość atakującego o 1 stopień.
-* Dobra pozycja / zaskoczenie: podbij kość o 1 stopień.
-
-**Opcja: gra na siatce**
-
-* 1 kratka = 1–2 m. Ruch w turze: **do 5 kratek**. Reszta zasad bez zmian.
-
-**Przykład:** Specjalista strzela z osłony (Z <span class="rpg-token token-d12">k12</span>) do elity (Obrona 6). Cel jest w lekkiej osłonie → Z spada na <span class="rpg-token token-d8">k8</span>. Rzut 7: sukces, 1 Serce obrażeń.
+**Example:** The Adept tries to close the portal (<span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">d8</span>) under alarm and stress → worse situation, drops to <span class="rpg-token token-d6">d6</span>. D = 5. Roll 6: success, but the "alarm" remains in the background as narrative pressure.
 
 
 
 ---
 
-### 4) Magic
+### 3) Movement and Combat – Default without Grid, Grid as an Option
 
-- Casting: describe effect, spend Mana, roll Magic (M).
-  - Trick (spark, noise, fog) — <span class="rpg-token token-tn">TN</span> 4, cost 0–1 Mana.
-  - Bolt/Shield/Short Blink (5 squares) — <span class="rpg-token token-tn">TN</span> 6, cost 1 Mana.
-  - Area/Heal +2 Hearts/Paralyze — <span class="rpg-token token-tn">TN</span> 8, cost 2 Mana.
-  - Great power (bridge of ice, storm of fire) — <span class="rpg-token token-tn">TN</span> 12, cost 3 Mana.
-- Failure: Mana is spent; add a small consequence (breathless −1 Heart or unwanted attention).
-- After a fight: you recover all Mana; a safe rest also restores Hearts.
-Example: “Blink” (short teleport 5 squares): <span class="rpg-token token-tn">TN</span> 6, cost 1 Mana. Mage <span class="rpg-token token-d10">d10</span> rolls 7 — success behind cover.
+**Default: theatre of mind (recommended)**
 
+* Describe distances as: **Close** (within reach), **Nearby** (a few steps), **Far** (the other side of the stage), **Very Far** (sniper/vehicle).
+* In a turn, you have: **Movement + 1 Action**.
 
+  * Movement usually changes the distance by 1 "degree" (Nearby→Close, etc.).
+* **Attack**: roll **<span class="rpg-token token-stat">M</span>** (melee) or **R** (ranged) against the target's **Defense**.
 
----
+**Defense of opponents (approximate):**
 
-### 5) Down and healing
+* **Weak** 4, **Typical** 5, **Elite** 6, **Boss** 8 (legendary boss 12).
 
-- At 0 Hearts: you are down (no actions). An ally can use an Action to bring you to 1 Heart.
-- After a clash, with a brief safe rest and supplies, everyone returns to full Hearts and Mana.
-Example: Rogue drops to 0. Warrior helps — Rogue returns at 1 Heart.
+**Effects of a Hit (quick combat):**
 
+* A hit deals **1 Heart**.
+* A critical success deals **2 Hearts** or provides a strong effect (disarm, knockdown, distraction).
 
+**Cover and Positional Advantage:**
 
+* Light cover / poor angle: lower the attacker's die by 1 degree.
+* Good position / surprise: raise the die by 1 degree.
 
----
+**Option: play on a grid**
 
-### 6) Advancement (no extra dice on the table)
+* 1 square = 1–2 m. Movement in a turn: **up to 5 squares**. The rest of the rules remain unchanged.
 
-After an adventure choose one:
-- Raise one attribute’s die size: <span class="rpg-token token-d6">d6</span>→<span class="rpg-token token-d8">d8</span>→<span class="rpg-token token-d10">d10</span>→<span class="rpg-token token-d12">d12</span>→<span class="rpg-token token-d20">d20</span>,
-- or +1 Heart (max 7),
-- or +1 Mana (max 5).
-Example: Warrior raises Strength from <span class="rpg-token token-d10">d10</span> to <span class="rpg-token token-d12">d12</span> — hitting <span class="rpg-token token-tn">TN</span> 12 gets easier.
-
+**Example:** A specialist shoots from cover (R <span class="rpg-token token-d12">d12</span>) at an elite (Defense 6). The target is in light cover → R drops to <span class="rpg-token token-d8">d8</span>. Roll 7: success, 1 Heart of damage.
 
 
 
 ---
 
-### 7) <span class="rpg-token token-d6">d6</span>‑only variant
+### 4) Powers, 'Spells' and Special Maneuvers (Universal)
 
-If you only have a single <span class="rpg-token token-d6">d6</span>:
-- Replace die sizes with success thresholds per attribute:
-  - Master 3+, Trained 4+, Novice 5+, Untrained 6.
-- <span class="rpg-token token-tn">TN</span> still shifts situation by 1 step (easier/harder).
-- Help: lower the threshold by 1 (e.g., 4+ → 3+ for this roll).
-- Advancement: raise one attribute’s level (e.g., Trained 4+ → Master 3+) or +1 Heart/Mana.
-Example: Rogue (Trained 4+) shoots at a lightly covered target (one step harder) → needs 5+. <span class="rpg-token token-d6">d6</span>=5 — hit.
+This includes magic, psionics, cybernetics, gadgets, film tricks – depending on the world.
 
+* When you do something **above standard**: spend **<span class="rpg-token token-power">Power</span> Point** and roll **<span class="rpg-token token-stat">M</span>**.
+* Determine the level of effect:
+
+**<span class="rpg-token token-power">Power</span> Levels (T / cost):**
+
+* **Trick** (short effect, trick, "flash"): **T 4 / 0–1 PP**
+* **Standard** (attack, shield, impulse, minor control): **T 5 / 1 PP**
+* **Strong** (area, healing, paralysis, live hack): **T 6 / 2 PP**
+* **Great** (scene change, powerful intervention): **T 8–12 / 3 PP**
+
+**Failure:** PP is lost, and the consequence is immediate (overload, digital trace, crack in the ritual, unwanted attention).
+
+**Recovery:** after the conflict scene, you regain **1 PP**, after a safe rest – to full.
+
+**Example:** In a space opera, the Adept tries to "bend the sensor" of a drone: Standard, T 5, cost 1 PP. Roll <span class="rpg-token token-stat">M</span> <span class="rpg-token token-d8">k8</span> = 8: exceptional success – the drone loses signal and goes off track.
+
+
+
+---
+
+### 5) Fall, Risk, and Healing
+
+* When you fall to **0 Hearts**, you are **out of action** (injured, stunned, in shock – according to the convention).
+* An ally can spend an action to bring you back to **1 Heart** (first aid, adrenaline, system reboot).
+* After the scene, if you have a moment to catch your breath: you return to **full Hearts**, provided you have the conditions (shelter, bandage, service, meal).
+* If the scene was particularly brutal or the enemies have the upper hand, the Game Master may require that a "full reset" necessitates a safe stop.
+
+**Example:** Storm falls to 0. The specialist pulls him behind cover and spends an action: Storm returns to 1 Heart and can act in the next turn.
+
+
+
+---
+
+### 6) Character Development (campaign without tables and bookkeeping)
+
+
+After the adventure, choose **one**:
+
+* **Increase** one attribute by 1 step (max. to <span class="rpg-token token-d20">d20</span>), or
+* **+1 Heart** (max. 7), or
+* **+1 <span class="rpg-token token-power">Power</span> Point** (max. 5), or
+* **New Trait** (a short, one-sentence rule agreed upon with the Game Master).
+
+**Examples of traits (universal):**
+
+* **Pressure:** once per scene, when you hit in melee, you deal +1 Heart of damage.
+* **Shadow:** when you act from hiding, you have a die increase of 1 step.
+* **Spark:** once per scene, you can spend 1 PP to automatically achieve a "success at a cost" without rolling.
+
+**Example:** The Adept increases <span class="rpg-token token-stat">M</span> from <span class="rpg-token token-d8">d8</span> to <span class="rpg-token token-d12">d12</span> – now his powers stabilize better at T 5–6.
+
+
+
+---
+
+### 7) The "only <span class="rpg-token token-d6">d6</span>" variant in **2d6** mode (fast and highly playable)
+
+
+If you don't have a set of dice or want more "narrative" degrees of success:
+
+* Each test is: **roll 2d6 + ability modifier**.
+* **Ability modifiers** are chosen at the start: one ability **+2**, one **+1**, one **+0**.
+* Result:
+
+  * **6 or less** – failure with consequence
+  * **7–9** – success at a cost (compromise, loss of resource, worse position)
+  * **10+** – full success
+  * **12** – exceptional success (additional benefit)
+
+**Difficulty of the situation:** instead of changing thresholds, give **+1 / -1** to the roll (helps / hinders) or a cost in case of 7–9.
+
+**Mapping to the dice-ability version (if you want compatibility):**
+
+* <span class="rpg-token token-d6">d6</span> ≈ +0, <span class="rpg-token token-d8">d8</span> ≈ +1, <span class="rpg-token token-d12">d12</span> ≈ +2, <span class="rpg-token token-d20">d20</span> ≈ +3 (for very experienced characters).
+
+**Example:** A specialist shoots while running: <span class="rpg-token token-stat">Z</span> = +2, difficult situation (-1). Roll 2d6 = 8, total 9: success at a cost – hits, but ends up in an exposed position.
 
